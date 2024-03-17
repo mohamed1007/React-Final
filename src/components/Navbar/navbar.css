@@ -1,6 +1,8 @@
 .custom-navbar {
     height: 100px;
-    background-color: #e3e2e2;
+    background-color: white;
+    font-family: "Red Hat Mono", monospace;
+    font-size:30px;
   }
   
   .navbar-logo {
@@ -36,7 +38,7 @@ li{
   border-radius: 10px;
   margin-left: -55px;
   margin-top: -35px;
-  background: red;
+  background: orangered;
   color: white;
   font-size: 15px;
 }
