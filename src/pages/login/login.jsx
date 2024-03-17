@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup'
 
 
-export default function login() {
+export default function Login() {
 
     let navigate = useNavigate();
 
