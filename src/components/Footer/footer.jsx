@@ -1,17 +1,21 @@
 import React from 'react';
+import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light py-4" style={{  bottom: '0', width: '100%' }}>
+    <footer className="bg-secondary text-light py-4" style={{  bottom: '0', width: '100%' }}>
       <div className="container">
         <div className="row">
-          <div className="col-md-6">
-            <h5>Contact Us</h5>
-            <p>123 Street Name, City, Country</p>
-            <p>Email: info@example.com</p>
-            <p>Phone: +1234567890</p>
+          <div className="col-4">
+            <img src={logo} alt="" style={{height : "150px" , borderRadius:"50%"}}/>
           </div>
-          <div className="col-md-6">
+          <div className="col-4">
+            <h5>Contact Us</h5>
+            <p>13 Alexandria st. , Giza, Egypt</p>
+            <p>Email: engy.pharmacy.00@gmail.com</p>
+            <p>Phone: 02 35657871</p>
+          </div>
+          <div className="col-4">
             <h5>Follow Us</h5>
             <p>Stay connected with us on social media:</p>
             <div className="d-flex">
@@ -23,7 +27,7 @@ const Footer = () => {
         </div>
         <hr className="mt-4 mb-3" />
         <div className="text-center">
-          <p>&copy; 2024 My Pharmacy Store. All Rights Reserved.</p>
+          <p>&copy; 2024 Engy Pharmacy Store. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

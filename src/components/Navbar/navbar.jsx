@@ -38,7 +38,7 @@ const Navbar = () => {
                 <Link to={'medicines'} className="nav-link active" >Medicens</Link>
               </li>
               <li className="nav-item">
-                <Link to={'/caterories'} className="nav-link active" >Categories</Link>
+                <Link to={'/categories'} className="nav-link active" >Categories</Link>
               </li>
             </ul>
 
