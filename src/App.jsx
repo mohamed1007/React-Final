@@ -6,8 +6,8 @@ import Footer from './components/Footer/footer.jsx';
 import ContactUs from './pages/contact/contact.jsx';
 import Login from './pages/login/login.jsx';
 import Signup from './pages/signup/signup.jsx';
-import Medicines from './pages/medicines/medicines.jsx';
 import Categories from './pages/categories/categories.jsx';
+import Medicines from './pages/medicines/medicines.jsx';
 
 
 
@@ -18,6 +18,9 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="/contact" element={<ContactUs/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Signup/>} />
           <Route path="/contact" element={<ContactUs/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Signup/>} />

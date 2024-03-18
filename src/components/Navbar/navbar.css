@@ -5,6 +5,7 @@
   
   .navbar-logo {
     height: 200px;
+    width: auto;
     border-radius: 50%;
     margin-top: 100px;
 
@@ -12,7 +13,10 @@
   #navbarSupportedContent{
     justify-content: space-between;
     font-family: "Red Hat Mono", monospace;
+
     font-size: 30px;
+
+    font-size: 25px;
     font-weight: 700;
   }
 li{

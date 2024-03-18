@@ -21,7 +21,7 @@ const Poster = () =>{
                     <div>
                         Browse medicines
                     </div>
-                <img src={arrow} alt="" />
+                <img src={arrow} alt="" className='arrow' />
                 </div>
             </div>
             <div className="right">
