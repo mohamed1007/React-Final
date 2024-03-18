@@ -35,12 +35,7 @@ export default function Medicines() {
                     <p>Your</p>
                     <p>Medicine</p>
                 </div>
-                <div className='latest-btn'>
-                    <div>
-                        Browse medicines
-                    </div>
-                <img  alt="" />
-                </div>
+                
             </div>
             <div className="right">
                 <img src={image2}  alt="" className='medicene' />
@@ -48,6 +43,7 @@ export default function Medicines() {
         </div>
 
 
+        <h2 className="category-header mt-5">All Medicines</h2>
 
         <div className='container mt-5 mb-5'>
             <div className="row">

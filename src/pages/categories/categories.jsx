@@ -2,9 +2,51 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import find from '../../assets/search.png'
 import image2 from '../../assets/download (1).jpeg'
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import next from "../../assets/next.png";
+import prev from "../../assets/prev.webp";
+import arrow from "../../assets/arrow.png"
+
 
 import './categories.css'
+import { Link } from 'react-router-dom';
 export default function Categories() {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        nextArrow: <CustomNextArrow />,
+        prevArrow: <CustomPrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
 
     let [categories,setCategories]=useState([])
 
@@ -28,65 +70,54 @@ export default function Categories() {
                     </div>
                     <p>Your</p>
                     <p>Medicine</p>
-                    <p>By Categories</p>
+                    <p>By Category</p>
                 </div>
-                <div className='latest-btn'>
-                    <div>
-                        Browse medicines
-                    </div>
-                <img  alt="" />
-                </div>
+                
             </div>
             <div className="right">
                 <img src={image2}  alt="" className='mediceneCategory' />
             </div>
         </div>
 
-        <div className="container-fluid mt-5 mb-5">
-            <div className="row">
-                {categories.map((catrgory)=>{
+        <h2 className="category-header mt-5">All Categories</h2>
+        <div className="category-header">
+            <div className="slider-container">
+                <Slider {...settings}>
+                {categories.map((category)=>{
                     return(
                         <>
-                            <div className="col-md-2">
-                                <div className="card  mb-4">
-                                    <div className="card-body">
-                                        <img src={catrgory.image} alt="" className="imgCard w-100" style={{height:"200px"}} />
-                                        <h5 className="card-title text-center">{catrgory.name}</h5>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="slider-container">
+                            <Link>
+                                <img src={category.image} alt={category.name} className='slider-image' />
+                                
+                            </Link>
+                        </div>
                         </>
                     )
                 })}
+                </Slider>
+                
             </div>
         </div>
-        {/* <div id="categorySlider" className="carousel slide" data-ride="carousel">
-            <div className="carousel-inner">
-                {categories.map((category, index) => (
-                    <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-                        <div className="row">
-                            <div className="col-md-2">
-                                <div className="card mb-4">
-                                    <img src={category.image} alt="" className="card-img-top imgCard" style={{ height: "200px" }} />
-                                    <div className="card-body">
-                                        <h5 className="card-title text-center">{category.name}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-            <a className="carousel-control-prev" href="#categorySlider" role="button" data-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" href="#categorySlider" role="button" data-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-            </a>
-        </div> */}
 
     </>
+    
     )
+}
+
+const CustomNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+        <div className="custom-next-arrow" onClick={onClick}>
+            <img className='arrowImg' src={next} alt="" />
+        </div>
+    );
+}
+const CustomPrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+        <div className="custom-prev-arrow" onClick={onClick}>
+            <img className='arrowImg' src={prev} alt="" />
+        </div>
+    );
 }
