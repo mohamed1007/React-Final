@@ -10,10 +10,13 @@ import PosterMedicene from '../../components/posterMedicene/posterMedicene';
 export default function Medicines() {
 
     const [medicines, setMedicines] =useState([]);
-    async function getMedicines(){
-        let {data}= await axios.get('http://localhost:3000/getAllMedicines')
-        // console.log(data.allMedicines);
-        setMedicines(data.allMedicines)
+    async function getMedicines() {
+        try {
+            let { data } = await axios.get('http://localhost:3000/getAllMedicines');
+            setMedicines(data.allMedicines);
+        } catch (error) {
+            console.error('Error fetching medicines:', error);
+        }
     }
 
 
