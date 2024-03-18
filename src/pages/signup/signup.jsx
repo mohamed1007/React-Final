@@ -18,7 +18,7 @@ const Signup = () => {
     };
 
     const registerSchema = Yup.object().shape({
-        name: Yup.string().required('Name is required').min(3, 'Must be at least 3 characters').max(20, 'Must be less than 20 characters'),
+        name: Yup.string().required('Name is required').min(7, 'Must be at least 6 characters').max(20, 'Must be less than 20 characters'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{3,8}$/, 'Password must start with a capital letter and must be between 3 and 8 characters'),
         address: Yup.string().required('Address is required'),

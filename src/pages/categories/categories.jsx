@@ -1,17 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import find from '../../assets/search.png'
-import image2 from '../../assets/download (1).jpeg'
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
-import arrow from "../../assets/arrow.png"
 
 
 import './categories.css'
 import { Link } from 'react-router-dom';
+import PosterMedicene from '../../components/posterMedicene/posterMedicene';
+import PosterCategory from '../../components/posterCategory/posterCategory';
 export default function Categories() {
     const settings = {
         dots: true,
@@ -60,24 +59,7 @@ export default function Categories() {
 
     return (
     <>
-        <div className="poster"  >
-            <div className="left">
-                <h2>Find Every Medicine</h2>
-                <div>
-                    <div className="hand-ican">
-                        <p>Find</p>
-                        <img src={find}  alt="" />
-                    </div>
-                    <p>Your</p>
-                    <p>Medicine</p>
-                    <p>By Category</p>
-                </div>
-                
-            </div>
-            <div className="right">
-                <img src={image2}  alt="" className='mediceneCategory' />
-            </div>
-        </div>
+        <PosterCategory></PosterCategory>
 
         <h2 className="category-header mt-5">All Categories</h2>
         <div className="category-header">

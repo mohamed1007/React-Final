@@ -5,6 +5,7 @@ import './medicines.css'
 import find from '../../assets/search.png'
 import image2 from '../../assets/download (1).jpeg'
 import { Link } from 'react-router-dom';
+import PosterMedicene from '../../components/posterMedicene/posterMedicene';
 
 export default function Medicines() {
 
@@ -23,25 +24,8 @@ export default function Medicines() {
 
     return (
     <>
-    
-        <div className="poster"  >
-            <div className="left">
-                <h2>Find Every Medicine</h2>
-                <div>
-                    <div className="hand-ican">
-                        <p>Find</p>
-                        <img src={find}  alt="" />
-                    </div>
-                    <p>Your</p>
-                    <p>Medicine</p>
-                </div>
-                
-            </div>
-            <div className="right">
-                <img src={image2}  alt="" className='medicene' />
-            </div>
-        </div>
 
+        <PosterMedicene></PosterMedicene>
 
         <h2 className="category-header mt-5">All Medicines</h2>
 

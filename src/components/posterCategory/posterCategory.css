@@ -1,11 +1,11 @@
 
 
 
-.poster{
+.postercategory{
     height: 100vh;
-    background: linear-gradient(180deg,aquamarine 0%, #e1ffea22 60%) !important ;
+    background: linear-gradient(180deg,#b33711 0%, #e1ffea22 60%) ;
     display: flex;
-
+    margin-top: 30px;
 }
 
 .left{
@@ -63,9 +63,13 @@
     justify-content: center;
     
 }
-.doctor{
-    height: 90%;
-    width: auto;
+.medicene{
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    top: 200;
+    width: 100%;
+    height: 100%;
 }
 .arrow{
     height: auto;
