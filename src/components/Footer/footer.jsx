@@ -1,13 +1,14 @@
 import React from 'react';
 import logo from "../../assets/logo.png";
+import "./footer.css"
 
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-light py-4" style={{  bottom: '0', width: '100%' }}>
+    <footer className="footer bg-secondary text-light py-4">
       <div className="container">
         <div className="row">
           <div className="col-4">
-            <img src={logo} alt="" style={{height : "150px" , borderRadius:"50%"}}/>
+            <img src={logo} alt="" style={{height : "150px",width:"auto" , borderRadius:"50%"}}/>
           </div>
           <div className="col-4">
             <h5>Contact Us</h5>
