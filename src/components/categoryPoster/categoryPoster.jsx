@@ -1,11 +1,11 @@
 import React from 'react'
-import './posterCategory.css'
+import './categoryPoster.css'
 import find from "../../assets/search.png"
 import arrow from "../../assets/arrow.png"
 import image from '../../assets/download (1).jpeg'
-export default function PosterCategory() {
+export default function CategoryPoster() {
     return (
-        <div className="postercategory">
+        <div className="categoryPoster">
             <div className="left">
                 <h2>Find Every Medicine</h2>
                 <div>

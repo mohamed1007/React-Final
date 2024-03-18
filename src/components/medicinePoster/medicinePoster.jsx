@@ -1,11 +1,11 @@
 import React from 'react'
-import './posterMedicene.css'
+import './medicinePoster.css'
 import find from "../../assets/search.png"
 import arrow from "../../assets/arrow.png"
 import image from '../../assets/download (1).jpeg'
-export default function PosterMedicene() {
+export default function MedicinePoster() {
     return (
-        <div className="posterMedicene">
+        <div className="medicinePoster">
             <div className="left">
                 <h2>Find Every Medicine</h2>
                 <div>
@@ -15,12 +15,6 @@ export default function PosterMedicene() {
                     </div>
                     <p>Your</p>
                     <p>Medicine</p>
-                </div>
-                <div className='latest-btn'>
-                    <div>
-                        Browse medicines
-                    </div>
-                <img src={arrow} alt="" className='arrow' />
                 </div>
             </div>
             <div className="right">

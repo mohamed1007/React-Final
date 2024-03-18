@@ -5,12 +5,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
-
-
 import './categories.css'
 import { Link } from 'react-router-dom';
-import PosterMedicene from '../../components/posterMedicene/posterMedicene';
-import PosterCategory from '../../components/posterCategory/posterCategory';
+import PosterCategory from '../../components/categoryPoster/categoryPoster';
+
 export default function Categories() {
     const settings = {
         dots: true,

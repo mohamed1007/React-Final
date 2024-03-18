@@ -5,7 +5,7 @@ import './medicines.css'
 import find from '../../assets/search.png'
 import image2 from '../../assets/download (1).jpeg'
 import { Link } from 'react-router-dom';
-import PosterMedicene from '../../components/posterMedicene/posterMedicene';
+import PosterMedicene from '../../components/medicinePoster/medicinePoster';
 
 export default function Medicines() {
 
@@ -26,10 +26,10 @@ export default function Medicines() {
 
 
     return (
-    <>
-
-        <PosterMedicene></PosterMedicene>
-
+    <div className='container-fluid'>
+        <div className="row">
+            <PosterMedicene></PosterMedicene>
+        </div>
         <h2 className="category-header mt-5">All Medicines</h2>
 
         <div className='container mt-5 mb-5'>
@@ -59,6 +59,6 @@ export default function Medicines() {
                 })}                
             </div>
         </div>
-    </>
+    </div>
     )
 }
