@@ -1,24 +1,19 @@
 import React from 'react'
 import './medicinePoster.css'
-import find from "../../assets/search.png"
-import arrow from "../../assets/arrow.png"
-import image from '../../assets/download (1).jpeg'
+import mp from "../../assets/MedPoster.png"
+
 export default function MedicinePoster() {
     return (
         <div className="medicinePoster">
             <div className="left">
-                <h2>Find Every Medicine</h2>
                 <div>
-                    <div className="hand-ican">
-                        <p>Find</p>
-                        <img src={find} alt="" />
-                    </div>
-                    <p>Your</p>
-                    <p>Medicine</p>
+                    <p>Shop with Confidence</p>
+                    <p>Trusted Medications</p>
+                    <p>Reliable Service</p>
                 </div>
             </div>
             <div className="right">
-                <img src={image} alt="" className='medicene' />
+                <img src={mp} alt="" className='icon' />
             </div>
         </div>
     )
