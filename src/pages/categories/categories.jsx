@@ -67,9 +67,8 @@ export default function Categories() {
                     return(
                         <>
                         <div className="slider-container">
-                            <Link>
-                                <img src={category.image} alt={category.name} className='slider-image' />
-                                
+                            <Link to={`/category/${category.name}`}>
+                                <img  src={category.image} alt={category.name} className='slider-image' />
                             </Link>
                         </div>
                         </>

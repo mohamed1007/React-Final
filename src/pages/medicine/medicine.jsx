@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import image from '../../assets/D10_WEB_PRAC highlights_homepage_slider.png'
-import './medicene.css'
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
 import Slider from 'react-slick';
@@ -46,7 +44,6 @@ export default function Medicine() {
     const { name } = useParams();
     const [medicine, setMedicine] = useState(null);
     const[mediceneSameCategory,setmediceneSameCategory]=useState([])
-    const [selectedMedicine, setSelectedMedicine] = useState(null);
 
     const randomProducts = mediceneSameCategory.sort(() => Math.random()).slice(0, 6);
     // console.log(randomProducts);

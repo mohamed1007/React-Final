@@ -9,6 +9,7 @@ import Signup from './pages/signup/signup.jsx';
 import Categories from './pages/categories/categories.jsx';
 import Medicines from './pages/medicines/medicines.jsx';
 import Medicine from './pages/medicine/medicine.jsx';
+import Category from './pages/category/category.jsx';
 
 
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/medicines" element={<Medicines/>} />
           <Route path="/medicines/:name" element={<Medicine/>} />
           <Route path="/categories" element={<Categories/>} />
+          <Route path="/category/:name" element={<Category/>} />
         </Routes>
         <Footer/>
       </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -6,8 +6,23 @@ import './slider.css'; // Import the CSS file
 import image1 from '../../assets/logo.png';
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SliderComponent = () => {
+
+    const [categories, setCategories] = useState([]);
+
+    async function getCategories() {
+        let { data } = await axios.get('http://localhost:3000/getAllCategories');
+        console.log(data.allCategories);
+        setCategories(data.allCategories);
+    }
+
+    useEffect(() => {
+        getCategories();
+    })
+
     const settings = {
         dots: true,
         infinite: true,
@@ -48,96 +63,13 @@ const SliderComponent = () => {
             <h2 className="category-header">Categories</h2>
             <div className="slider-container">
                 <Slider {...settings}>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
+                    {categories.map((category) => (
+                        <div>
+                        <Link to={`/category/${category.name}`}>
+                        <img src={category.image} alt="Image 1" className="slider-image" /> 
+                        </Link>
                     </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                        <img src={image1} alt="Image 1" className="slider-image" /> 
-                        </a>
-                    </div>
+                    ))}
                 </Slider>
             </div>
         </div>
