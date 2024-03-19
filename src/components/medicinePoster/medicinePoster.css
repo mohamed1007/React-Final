@@ -1,11 +1,12 @@
 
 
 
-.posterMedicene{
-    height: 100vh;
-    background: linear-gradient(180deg,#b33711 0%, #e1ffea22 60%) ;
+.medicinePoster{
+    height: 40vh;
+    background: linear-gradient(50deg,rgb(230, 255, 255) 0%, rgb(180, 180, 255) 60%,rgb(255, 226, 231)) ;
     display: flex;
     margin-top: 30px;
+    border-radius: 10px;
 }
 
 .left{
@@ -14,20 +15,17 @@
     flex-direction: column;
     justify-content: center;
     gap:20px;
-    padding-left: 180px;
+    padding-left: 80px;
     line-height: 1.1;
 }
 
-.left h2{
-    color: #090909;
-    font-size: 25px;
-    font-weight: bold;
-}
 
 .left p{
-    color: #171717;
-    font-size: 100px;
+    color: gold;
+    font-size: 50px;
     font-weight: bold;
+    margin:40px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Add a slight shadow to make text stand out */
 }
 
 .hand-ican{
@@ -63,15 +61,11 @@
     justify-content: center;
     
 }
-.medicene{
+.icon{
     position: relative;
     background-position: center;
     background-size: cover;
     top: 200;
-    width: 100%;
-    height: 100%;
-}
-.arrow{
-    height: auto;
     width: auto;
+    height: 80%;
 }

@@ -1,58 +1,67 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-
-import './medicines.css'
+import React, { useEffect, useState } from 'react';
+import './medicines.css';
 import { Link } from 'react-router-dom';
-import PosterMedicene from '../../components/posterMedicene/posterMedicene';
+import MedicinePoster from '../../components/medicinePoster/medicinePoster';
 
 export default function Medicines() {
+    const [medicines, setMedicines] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const [medicines, setMedicines] =useState([]);
-    async function getMedicines(){
-        let {data}= await axios.get('http://localhost:3000/getAllMedicines')
-        // console.log(data.allMedicines);
-        setMedicines(data.allMedicines)
+    const getMedicines = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:3000/getAllMedicines');
+            setMedicines(data.allMedicines);
+        } catch (error) {
+            console.error('Error fetching medicines:', error);
+        }
     }
 
+    useEffect(() => {
+        getMedicines();
+    }, []);
 
-    useEffect(()=>{
-        getMedicines() 
-    },[])
+    // Calculate the index of the first and last medicine to display on the current page
+    const indexOfLastMedicine = currentPage * 12;
+    const indexOfFirstMedicine = indexOfLastMedicine - 12;
+    const currentMedicines = medicines.slice(indexOfFirstMedicine, indexOfLastMedicine);
 
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-    <>
-
-        <PosterMedicene></PosterMedicene>
-
-        <h2 className="category-header mt-5">All Medicines</h2>
-
-        <div className='container mt-5 mb-5'>
-            <div className="row">
-                {medicines.map((medicene, index)=>{
-                    return(
-                        <>
-                    <div className='col-md-4' >
-                        <div className="card card-medicene mb-4">
-                                <div className="card-body" key={index}>
-                                    <img src={medicene.image} alt={medicene.name} className="imgCard w-100" style={{height:"200px"}} />
-                                    <h5 className="card-title mt-3 fw-bold">Name: <span>{medicene.name}</span></h5>
-                                    <p className="card-text">activeSubstance:<ul>
-                                        {medicene.activeSubstance.map((activeSubstance, index )=>{return <li key={index}>{activeSubstance}</li>})}</ul></p>
-                                    <p className="card-text">Quantity: <span>{medicene.stock}</span></p>
-                                    <p className="card-text">Price: <span>{medicene.price} L.E</span></p>
-                                    <div className="d-flex justify-content-between">
-                                    <Link to={`/medicines/${medicene.name}`}><button className="AddToCart1 btn btn-primary  fw-bold">Details</button></Link>
-                                    <Link><button className="AddToCart btn btn-success d-block ms-auto fw-bold">Add To Cart</button></Link>
+        <div className='container'>
+            <MedicinePoster />
+            
+            <div className='container mt-5 mb-5'>
+                <div className="row">
+                    {currentMedicines.map((medicine, index) => (
+                        <div className='col-md-4' key={index}>
+                            
+                                <div className="card card-medicine m-4">
+                                    <div className="card-body">
+                                    <Link to={`/medicines/${medicine.name}`}>
+                                        <img src={medicine.image} alt={medicine.name} className="imgCard " />
+                                    </Link>
+                                        <h5 className="card-title mt-3 fw-bold">Name: <span>{medicine.name}</span></h5><br />
+                                        <p className="card-text">Price: <span>{medicine.price} L.E</span></p>
                                     </div>
+                                    
                                 </div>
+                            
                         </div>
-                    </div>
-                        </>
-                    )
-                })}                
+                    ))}
+                </div>
             </div>
+            <nav>
+                <ul className="pagination justify-content-center">
+                    {Array.from({ length: Math.ceil(medicines.length / 10) }, (_, i) => (
+                        <li className="page-item" key={i}>
+                            <button className="page-link" onClick={() => paginate(i + 1)}>{i + 1}</button>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
         </div>
-    </>
     )
 }

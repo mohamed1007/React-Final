@@ -6,6 +6,7 @@ import './medicene.css'
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
 import Slider from 'react-slick';
+import MedicinePoster from '../../components/medicinePoster/medicinePoster';
 export default function Medicine() {
     const settings = {
         dots: true,
@@ -85,8 +86,8 @@ export default function Medicine() {
 
     return (
         <>
-            <div className=' mb-5'>
-                <img src={image} alt="cover" style={{ width: '100%' }} />
+            <div className='container mb-5'>
+            <MedicinePoster />
             </div>
             <div className="container">
                 <div className="row">
