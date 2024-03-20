@@ -116,21 +116,7 @@ export default function Medicine() {
                 </div>
             </div>
             <h2 className="category-header mt-5">Similar Medicines</h2>
-    
-                    {/* {randomProducts.map((medicene, index) => (
-                        <div className="col-md-4 " key={index}>
-                            <div  className="card card-medicene mb-4">
-                                <div className="card-body">
-                                    <img src={medicene.image} alt={medicene.name} className="imgCard w-100" style={{ height: "200px" }} />
-                                    <h5 className="card-title mt-3 fw-bold">Name: <span>{medicene.name}</span></h5>
-                                    <p className="card-text">Price: <span>{medicene.price} L.E</span></p>
-                                    <div className="d-flex justify-content-between">
-                                        <Link><button onClick={()=>setMedicine(medicene)} className="btn btn-outline-info">More Details</button></Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))} */}
+
                     <div className="category-header m-auto">
             <div className="slider-container">
                 <Slider {...settings}>

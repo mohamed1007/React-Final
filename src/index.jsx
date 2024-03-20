@@ -5,14 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import ContextDataProvider from './context/contextData';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <ContextDataProvider>
     <App />
-  </React.StrictMode>
+  </ContextDataProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

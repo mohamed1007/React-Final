@@ -9,7 +9,6 @@ const Signup = () => {
 
     const register = async (userData) => {
         try {
-        
             const { data } = await axios.post('http://localhost:3000/signup', userData);
             console.log(data);
             if (data.message === 'Customer added') navigate('/login');
@@ -17,11 +16,13 @@ const Signup = () => {
             console.error('Error occurred while registering:', error);
         }
     };
+    // Yousefahmed  // Yousefahmed@gmail.com  // Test12345
 
     const registerSchema = Yup.object().shape({
         name: Yup.string().required('Name is required').min(7, 'Must be at least 6 characters').max(20, 'Must be less than 20 characters'),
         email: Yup.string().email('Invalid email').required('Email is required'),
         password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{5,20}$/, 'Password must start with a capital letter and must be between 5 and 20 characters'),
+        // password: Yup.string().required('Password is required'),
         address: Yup.string().required('Address is required'),
         phone: Yup.string().required('Phone number is required').matches(/^01[0125][0-9]{8}$/, 'Invalid phone number')
     });
