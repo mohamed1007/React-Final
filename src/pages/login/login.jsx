@@ -22,7 +22,7 @@ const Login = () => {
 
     const loginSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email').required('Email is required'),
-        password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{3,8}$/, 'Password must start with a capital letter and must be between 3 and 8 characters'),
+        password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{5,20}$/, 'Password must start with a capital letter and must be between 5 and 20 characters'),
     });
 
     return (
