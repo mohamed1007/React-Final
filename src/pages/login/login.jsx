@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { ContextData } from '../../context/contextData';
 
-
+import './login.css'
 const Login = () => {
     let navigate = useNavigate();
     let {token,setToken}=useContext(ContextData)
@@ -21,6 +21,7 @@ const Login = () => {
             }
         } catch (error) {
             console.error('Error occurred while logging in:', error);
+            alert('Invalid email or password');
         }
     };
 
