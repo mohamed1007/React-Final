@@ -90,7 +90,7 @@ export default function Medicine() {
                 <div className="row">
                     <div className="col-md-4">
                         <div className="card border-0 shadow-lg">
-                            <img src={medicine.image} className="card-img-top" alt={medicine.name} style={{ height: '525px', objectFit: 'cover' }} />
+                            <img src={medicine.image} className="card-img-top" alt={medicine.name} style={{ height: '525px', width: "auto", objectFit: 'cover' }} />
                         </div>
                     </div>
                     <div className="col-md-8 mb-5">

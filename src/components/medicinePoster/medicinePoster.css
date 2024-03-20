@@ -28,30 +28,6 @@
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Add a slight shadow to make text stand out */
 }
 
-.hand-ican{
-    display: flex;
-    align-items: center;
-    gap:20px;
-}
-
-.hand-ican img{
-    width: 105px;
-}
-
-.latest-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:15px;
-    width: 310px;
-    height: 70px;
-    border-radius: 75px;
-    margin-top: 30px;
-    background: orangered;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-}
 
 
 .right{

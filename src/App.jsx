@@ -10,6 +10,7 @@ import Categories from './pages/categories/categories.jsx';
 import Medicines from './pages/medicines/medicines.jsx';
 import Medicine from './pages/medicine/medicine.jsx';
 import Category from './pages/category/category.jsx';
+import About from './pages/about/about.jsx';
 
 
 
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/medicines/:name" element={<Medicine/>} />
           <Route path="/categories" element={<Categories/>} />
           <Route path="/category/:name" element={<Category/>} />
+          <Route path="/about" element={<About/>} />
         </Routes>
         <Footer/>
       </div>

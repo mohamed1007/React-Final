@@ -1,13 +1,13 @@
 
 
 
-.poster{
+.main-poster{
     height: 100vh;
     background: linear-gradient(180deg,aquamarine 0%, #e1ffea22 60%) !important ;
     display: flex;
 }
 
-.left{
+.main-left{
     flex:1;
     display: flex;
     flex-direction: column;
@@ -17,13 +17,13 @@
     line-height: 1.1;
 }
 
-.left h2{
+.main-left h2{
     color: #090909;
     font-size: 25px;
     font-weight: bold;
 }
 
-.left p{
+.main-left p{
     color: #171717;
     font-size: 100px;
     font-weight: bold;
@@ -55,7 +55,7 @@
 }
 
 
-.right{
+.main-right{
     flex:1;
     display: flex;
     align-items: center;

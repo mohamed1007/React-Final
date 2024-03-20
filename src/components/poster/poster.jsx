@@ -6,8 +6,8 @@ import doctor from "../../assets/doctor.webp"
 
 const Poster = () =>{
     return(
-        <div className="poster">
-            <div className="left">
+        <div className="main-poster">
+            <div className="main-left">
                 <h2>Find Every Medicine</h2>
                 <div>
                     <div className="hand-ican">
@@ -24,7 +24,7 @@ const Poster = () =>{
                 <img src={arrow} alt="" className='arrow' />
                 </div>
             </div>
-            <div className="right">
+            <div className="main-right">
                 <img src={doctor} alt="" className='doctor' />
             </div>
         </div>

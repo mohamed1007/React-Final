@@ -2,75 +2,46 @@
 
 
 .categoryPoster{
-    height: 100vh;
-    background: linear-gradient(180deg,#b33711 0%, #e1ffea22 60%) ;
+    height: 40vh;
+    background: linear-gradient(50deg,rgb(250, 255, 230) 0%, rgb(247, 193, 226) 60%,rgb(246, 226, 255)) ;
     display: flex;
     margin-top: 30px;
+    border-radius: 10px;
 }
 
-.left{
+.category-left{
     flex:1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap:20px;
-    padding-left: 180px;
+    padding-left: 80px;
     line-height: 1.1;
 }
 
-.left h2{
-    color: #090909;
-    font-size: 25px;
+
+.category-left p{
+    color: gold;
+    font-size: 50px;
     font-weight: bold;
-}
-
-.left p{
-    color: #171717;
-    font-size: 100px;
-    font-weight: bold;
-}
-
-.hand-ican{
-    display: flex;
-    align-items: center;
-    gap:20px;
-}
-
-.hand-ican img{
-    width: 105px;
-}
-
-.latest-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:15px;
-    width: 310px;
-    height: 70px;
-    border-radius: 75px;
-    margin-top: 30px;
-    background: orangered;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
+    margin:40px;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Add a slight shadow to make text stand out */
 }
 
 
-.right{
+
+.category-right{
     flex:1;
     display: flex;
     align-items: center;
     justify-content: center;
     
 }
-.medicene{
+.icon{
     position: relative;
     background-position: center;
     background-size: cover;
     top: 200;
-    width: 100%;
-}
-.arrow{
-    height: auto;
     width: auto;
+    height: 80%;
 }
