@@ -8,13 +8,13 @@ const Navbar = () => {
 
     let {token,setToken}=useContext(ContextData)
     let navigate = useNavigate();
+    let {getTotalCartItems}=useContext(ContextData)
 
     function logOut(){
       localStorage.removeItem('token');
       setToken(null)
       navigate('/login');
     }
-    
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -51,7 +51,7 @@ const Navbar = () => {
             </ul> 
             <div className='nav-login'>
                 <Link to={'/cart'}><img src={cartItem}  alt='cart'/></Link>
-                <div className='nav-cart-count'>0</div>
+                <div className='nav-cart-count'>{getTotalCartItems()}</div>
                 {token?<Link to={'/login'}><button className='btn btn-outline-danger' onClick={logOut}>Logout</button></Link>:<Link to={'/login'}><button className='btn btn-outline-dark'>Login</button></Link>}
             </div>
             
