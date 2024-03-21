@@ -1,8 +1,9 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './categories.css';
 import { Link } from 'react-router-dom';
 import CategoryPoster from '../../components/categoryPoster/categoryPoster';
+import axios from 'axios';
+import Sidebar from '../../components/sidebar/sidebar';
 
 export default function Categories() {
     const [categories, setCategories] = useState([]);
@@ -32,31 +33,35 @@ export default function Categories() {
 
     return (
         <div className='container-fluid'>
-            <div className="container">
-                <CategoryPoster />
-            </div>
-            <h2 className="category-header mt-5">All Categories</h2>
-            <div className="cards-cont mt-5 mb-5">
-                <div className="row">
-                    {currentCategories.map((category, index) => (
-                        <div className='col-lg-6 p-5' key={index}>
-                            <Link to={`/category/${category.name}`} className="category-link">
-                                <img src={category.image} alt={category.name} className="category-image" />
-                                <h5 className="category-name">{category.name}</h5>
-                            </Link>
+            <CategoryPoster />
+            <div className="row p-5">
+                <div className="col-3 mt-5"> {/* Sidebar column */}
+                    <Sidebar />
+                </div>
+                <div className="col-9"> {/* Main content column */}
+                    <div className="cards-cont mt-5 mb-5">
+                        <div className="row">
+                            {currentCategories.map((category, index) => (
+                                <div className='col-lg-6 p-4' key={index}>
+                                    <Link to={`/category/${category.name}`} className="category-link">
+                                        <img src={category.image} alt={category.name} className="category-image" />
+                                        <h5 className="category-name">{category.name}</h5>
+                                    </Link>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+                    <nav>
+                        <ul className="pagination justify-content-center">
+                            {Array.from({ length: Math.ceil(categories.length / categoriesPerPage) }, (_, i) => (
+                                <li className={`page-item ${currentPage === i + 1 ? 'active' : ''}`} key={i}>
+                                    <button className="page-link" onClick={() => paginate(i + 1)}>{i + 1}</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            <nav>
-                <ul className="pagination justify-content-center">
-                    {Array.from({ length: Math.ceil(categories.length / categoriesPerPage) }, (_, i) => (
-                        <li className={`page-item ${currentPage === i + 1 ? 'active' : ''}`} key={i}>
-                            <button className="page-link" onClick={() => paginate(i + 1)}>{i + 1}</button>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
         </div>
-    )
+    );
 }
