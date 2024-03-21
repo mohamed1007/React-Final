@@ -17,6 +17,7 @@
     font-size: 30px;
 
     font-size: 25px;
+
     font-weight: 700;
   }
 li{
@@ -25,10 +26,12 @@ li{
   
 
 .nav-login{
+
   display: flex;
   align-items: center;
   gap: 45px;
-  margin-right: 60px;
+  padding-left: 60px;
+  /* margin-right: 200px; */
 }
 
 

@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
 import Slider from 'react-slick';
 import MedicinePoster from '../../components/medicinePoster/medicinePoster';
+import { ContextData } from '../../context/contextData';
 export default function Medicine() {
+
+    let{addToCart}=useContext(ContextData)
+
     const settings = {
         dots: true,
         infinite: true,
@@ -43,6 +47,7 @@ export default function Medicine() {
 
     const { name } = useParams();
     const [medicine, setMedicine] = useState(null);
+    // console.log(medicine);
     const[mediceneSameCategory,setmediceneSameCategory]=useState([])
 
     const randomProducts = mediceneSameCategory.sort(() => Math.random()).slice(0, 6);
@@ -107,8 +112,7 @@ export default function Medicine() {
                                     <li className="list-group-item"><strong>Price:</strong> {medicine.price}</li>
                                 </ul>
                                 <div className="mt-3">
-                                    <Link to="/cart" className="btn btn-outline-success d-block ms-auto">Add to Cart</Link>
-                                    {/* <button className="btn btn-outline-secondary">More Details</button> */}
+                                    <Link to="/cart" className="btn btn-outline-success d-block ms-auto" onClick={()=>addToCart(medicine._id)}>Add to Cart</Link>
                                 </div>
                             </div>
                         </div>
@@ -116,28 +120,14 @@ export default function Medicine() {
                 </div>
             </div>
             <h2 className="category-header mt-5">Similar Medicines</h2>
-    
-                    {/* {randomProducts.map((medicene, index) => (
-                        <div className="col-md-4 " key={index}>
-                            <div  className="card card-medicene mb-4">
-                                <div className="card-body">
-                                    <img src={medicene.image} alt={medicene.name} className="imgCard w-100" style={{ height: "200px" }} />
-                                    <h5 className="card-title mt-3 fw-bold">Name: <span>{medicene.name}</span></h5>
-                                    <p className="card-text">Price: <span>{medicene.price} L.E</span></p>
-                                    <div className="d-flex justify-content-between">
-                                        <Link><button onClick={()=>setMedicine(medicene)} className="btn btn-outline-info">More Details</button></Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))} */}
+
                     <div className="category-header m-auto">
             <div className="slider-container">
                 <Slider {...settings}>
-                {randomProducts.map((medicene)=>{
+                {randomProducts.map((medicene,index)=>{
                     return(
                         <>
-                        <div className="slider-container">
+                        <div key={index} className="slider-container">
                             <Link>
                                 <img onClick={()=>setMedicine(medicene)} src={medicene.image} alt={medicene.name} className='slider-image' style={{ height: "200px", objectFit: "cover", objectPosition: "center", borderRadius: "50px" }} />
                             </Link>

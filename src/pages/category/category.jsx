@@ -21,7 +21,7 @@ export default function Category() {
 
     useEffect(() => {
         getMedicines();
-    }, []);
+    },[]);
 
     return (
         <>

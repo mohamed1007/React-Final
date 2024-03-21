@@ -15,7 +15,7 @@ const SliderComponent = () => {
 
     async function getCategories() {
         let { data } = await axios.get('http://localhost:3000/getAllCategories');
-        console.log(data.allCategories);
+        // console.log(data.allCategories);
         setCategories(data.allCategories);
     }
 
@@ -63,8 +63,8 @@ const SliderComponent = () => {
             <h2 className="category-header">Categories</h2>
             <div className="slider-container">
                 <Slider {...settings}>
-                    {categories.map((category) => (
-                        <div>
+                    {categories.map((category, index) => (
+                        <div key={index}>
                         <Link to={`/category/${category.name}`}>
                         <img src={category.image} alt="Image 1" className="slider-image" /> 
                         </Link>

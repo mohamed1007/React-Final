@@ -1,28 +1,33 @@
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { ContextData } from '../../context/contextData';
 
+import './login.css'
 const Login = () => {
     let navigate = useNavigate();
-
+    let {token,setToken}=useContext(ContextData)
+    // console.log(token);
     const login = async (userData) => {
         try {
-            const { data } = await axios.post('http://localhost:4000/signin', userData);
+            const { data } = await axios.post('http://localhost:3000/signin', userData);
             console.log(data);
             if (data.message === 'Customer found') {
-                navigate('/');
                 localStorage.setItem('token', data.TOKEN);
+                setToken(data.TOKEN)
+                navigate('/');
             }
         } catch (error) {
             console.error('Error occurred while logging in:', error);
+            alert('Invalid email or password');
         }
     };
 
     const loginSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email').required('Email is required'),
-        password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{3,8}$/, 'Password must start with a capital letter and must be between 3 and 8 characters'),
+        password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{5,20}$/, 'Password must start with a capital letter and must be between 5 and 20 characters'),
     });
 
     return (

@@ -3,33 +3,35 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-
+import bcrypt from 'bcryptjs';
 const Signup = () => {
     let navigate = useNavigate();
 
     const register = async (userData) => {
         try {
-            const { data } = await axios.post('http://localhost:4000/signup', userData);
+            const { data } = await axios.post('http://localhost:3000/signup', userData);
             console.log(data);
-            if (data.message === 'Customer added') navigate('/signin');
+            if (data.message === 'Customer added') navigate('/login');
         } catch (error) {
             console.error('Error occurred while registering:', error);
         }
     };
+    // Yousefahmed  // Yousefahmed@gmail.com  // Test12345
 
     const registerSchema = Yup.object().shape({
         name: Yup.string().required('Name is required').min(7, 'Must be at least 6 characters').max(20, 'Must be less than 20 characters'),
         email: Yup.string().email('Invalid email').required('Email is required'),
-        password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{3,8}$/, 'Password must start with a capital letter and must be between 3 and 8 characters'),
+        password: Yup.string().required('Password is required').matches(/^[A-Z][a-z0-9]{5,20}$/, 'Password must start with a capital letter and must be between 5 and 20 characters'),
+        // password: Yup.string().required('Password is required'),
         address: Yup.string().required('Address is required'),
         phone: Yup.string().required('Phone number is required').matches(/^01[0125][0-9]{8}$/, 'Invalid phone number')
     });
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5" style={{height:"100vh"}}>
             <div className="row justify-content-center">
                 <div className="col-md-8 mt-5 mb-5">
-                    <div className="card shadow">
+                    <div className="card shadow" style={{height:"90vh"}}>
                         <div className="card-body">
                             <h2 className="card-title text-center mb-4">Sign Up</h2>
                             <Formik
@@ -75,7 +77,7 @@ const Signup = () => {
                                         </div>
                                         <div className="d-grid gap-2">
                                             <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>Submit</button>
-                                            <p className="text-center mt-3">
+                                            <p className="text-center mt-3 mb-5">
                                                 Already have an account? <Link to="/login">Login</Link>
                                             </p>
                                         </div>
