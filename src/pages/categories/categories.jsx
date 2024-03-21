@@ -8,7 +8,7 @@ import Sidebar from '../../components/sidebar/sidebar';
 export default function Categories() {
     const [categories, setCategories] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const categoriesPerPage = 10;
+    const categoriesPerPage = 8;
 
     const getCategories = async () => {
         try {

@@ -21,4 +21,11 @@
       width: 100%; /* Make sidebar full width on small screens */
     }
   }
+  .sb-img{
+    transition: 0.8s;
+    border-radius: 10px;
+  }
+  .sb-img:hover{
+    scale: 1.3;
+  }
   

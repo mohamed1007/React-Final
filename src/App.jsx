@@ -14,6 +14,7 @@ import About from './pages/about/about.jsx';
 import { ContextData } from './context/contextData.js';
 import IsLogin from './context/isLogin.js';
 import Cart from './pages/cart/cart.jsx';
+import MainLayout from './Layouts/mainLayout/mainLayout.jsx';
 
 
 
@@ -29,22 +30,18 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/contact" element={<IsLogin><ContactUs/></IsLogin>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/" element={<MainLayout><Home/></MainLayout>} />
+          <Route path="/contact" element={<MainLayout><IsLogin><ContactUs/></IsLogin></MainLayout>} />
           <Route path="/register" element={<Signup/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Signup/>} />
-          <Route path="/medicines" element={<Medicines/>} />
-          <Route path="/medicines/:name" element={<Medicine/>} />
-          <Route path="/categories" element={<Categories/>} />
-          <Route path="/category/:name" element={<Category/>} />
-          <Route path="/about" element={<About/>} />
-          <Route path="/cart" element={<IsLogin><Cart/></IsLogin>} />
+          <Route path="/medicines" element={<MainLayout><Medicines/></MainLayout>} />
+          <Route path="/medicines/:name" element={<MainLayout><Medicine/></MainLayout>} />
+          <Route path="/categories" element={<MainLayout><Categories/></MainLayout>} />
+          <Route path="/category/:name" element={<MainLayout><Category/></MainLayout>} />
+          <Route path="/about" element={<MainLayout><About/></MainLayout>} />
+          <Route path="/cart" element={<MainLayout><IsLogin><Cart/></IsLogin></MainLayout>} />
         </Routes>
-        <Footer/>
       </div>
     </Router>
   );

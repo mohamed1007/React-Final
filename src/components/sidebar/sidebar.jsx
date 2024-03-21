@@ -11,9 +11,9 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div>
-        <img src={image1} alt="Image 1"  className=' mb-5'/>
-        <img src={image2} alt="Image 2"  className='mt-5 mb-5'/>
-        <img src={image3} alt="Image 2"  className='mt-5 mb-5'/>
+        <img src={image1} alt="Image 1"  className='sb-img mb-5'/>
+        <img src={image2} alt="Image 2"  className='sb-img mt-5 mb-5'/>
+        <img src={image3} alt="Image 2"  className='sb-img mt-5'/>
       </div>
     </div>
   );
