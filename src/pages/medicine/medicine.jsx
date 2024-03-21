@@ -47,6 +47,7 @@ export default function Medicine() {
 
     const { name } = useParams();
     const [medicine, setMedicine] = useState(null);
+    
     // console.log(medicine);
     const[mediceneSameCategory,setmediceneSameCategory]=useState([])
 
@@ -112,7 +113,7 @@ export default function Medicine() {
                                     <li className="list-group-item"><strong>Price:</strong> {medicine.price}</li>
                                 </ul>
                                 <div className="mt-3">
-                                    <Link className="btn btn-outline-success d-block ms-auto" onClick={()=>addToCart(medicine._id)}>Add to Cart</Link>
+                                    <Link className="btn btn-outline-warning d-block ms-auto text-dark" onClick={()=>addToCart(medicine._id)}>Add to Cart <i className="fa-solid fa-cart-shopping"></i></Link>
                                 </div>
                             </div>
                         </div>
