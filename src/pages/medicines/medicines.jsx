@@ -3,7 +3,6 @@ import './medicines.css';
 import { Link } from 'react-router-dom';
 import MedicinePoster from '../../components/medicinePoster/medicinePoster';
 import axios from 'axios';
-import image1 from "../../assets/logo.png"; // Import image for the sidebar
 import Sidebar from '../../components/sidebar/sidebar';
 
 export default function Medicines() {

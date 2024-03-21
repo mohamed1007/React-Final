@@ -1,5 +1,5 @@
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 
 export const ContextData = createContext();
@@ -8,16 +8,8 @@ export default function ContextDataProvider(props) {
     const [allMedicine, setAllMedicine] = useState([]);
     const [token, setToken] = useState(null);
 
-    const getDefaultCart = () => {
-        let cart = {};
-        for (let i = 0; i < allMedicine.length + 1; i++) {
-            cart[i] = 0;
-        }
-        return cart;
-    }
-
-    const [cartItems, setCartItems] = useState(getDefaultCart());
-
+    const [cartItems, setCartItems] = useState({});
+    console.log(cartItems);
     useEffect(() => {
         getAllMedicenes();
     }, []);
@@ -26,9 +18,18 @@ export default function ContextDataProvider(props) {
         try {
             const { data } = await axios.get('http://localhost:3000/getAllMedicines');
             setAllMedicine(data.allMedicines);
+            setCartItems(createDefaultCart(data.allMedicines));
         } catch (error) {
             console.error('Error fetching medicines:', error);
         }
+    }
+
+    function createDefaultCart(medicines) {
+        let cart = {};
+        for (const medicine of medicines) {
+            cart[medicine._id] = 0;
+        }
+        return cart;
     }
 
     function addToCart(itemId) {
@@ -43,7 +44,7 @@ export default function ContextDataProvider(props) {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let itemInfo = allMedicine.find((product) => product._id === Number(item));
+                let itemInfo = allMedicine.find((product) => product._id === item);
                 totalAmount += itemInfo.price * cartItems[item];
             }
         }

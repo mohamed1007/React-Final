@@ -1,20 +1,27 @@
 
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './cart.css'
 import { ContextData } from '../../context/contextData'
 import iconDelete from '../../assets/cart_cross_icon.png'
-import axios from 'axios';
 export default function Cart() {
-    let [allMeicine,setAllMeicine]=useState([]);
-    const{cartItems,removeFromCart,getTotalCartItems}=useContext(ContextData);
-    async function getAllMedicene(){
-        let {data}=await axios.get('http://localhost:3000/getAllMedicines');
-        setAllMeicine(data.allMedicines);
-    }
-    useEffect(()=>{
-        getAllMedicene();
-    },[])
+    
+    const{decodedToken,allMedicine,cartItems,removeFromCart,getTotalPrice}=useContext(ContextData);
+
+    const [order,setOrder]=useState({})
+    console.log(order);
+    const handleProceedToCheckout = () => {
+        const items = allMedicine
+            .filter(item => cartItems[item._id] > 0)
+            .map(item => item.name);
+
+        setOrder({
+            email:decodedToken.email,
+            items:[...items],
+        });
+        
+    };
+    
     return (
         <div className='CartItems'>
             <div className="CartIt-format-main">
@@ -27,15 +34,15 @@ export default function Cart() {
             </div>
             <hr />
             
-            {allMeicine.map((item)=>{
-                if(cartItems[item.name] > 0 ){
+            {allMedicine.map((item)=>{
+                if(cartItems[item._id] > 0 ){
                     return  <div>
                                 <div className="CartItems-format CartIt-format-main">
                                     <img className='CartIcon-product-icon' src={item.image} alt="" />
                                     <p>{item.name}</p>
                                     <p>${item.price}</p>
                                     <button className='CartItems-quantity'>{cartItems[item._id]}</button>
-                                    {/* <p>${item.new_price*cartItems[item.id]}</p> */}
+                                    <p>${item.price*cartItems[item._id]}</p>
                                     <img className='CartItems-delete' src={iconDelete} onClick={()=>removeFromCart(item._id)} alt="" />
                                 </div>
                                 <hr />
@@ -51,7 +58,7 @@ export default function Cart() {
                     <div>
                         <div className="cartitems-total-price">
                             <p>Subtotal</p>
-                            <p>${getTotalCartItems()}</p>
+                            <p>${getTotalPrice()}</p>
                             {/* <p>$ getTotalCartAmount</p> */}
 
                         </div>
@@ -63,11 +70,11 @@ export default function Cart() {
                         <hr />
                         <div className="cartitems-total-price">
                             <h3>Total</h3>
-                            <h3>${getTotalCartItems()}</h3>
+                            <h3>${getTotalPrice()}</h3>
                             {/* <h3>$ getTotalCartAmount</h3> */}
                         </div>
                     </div>
-                    <button>PROCEED TO Checkout</button>
+                    <button onClick={handleProceedToCheckout}>PROCEED TO Checkout</button>
                 </div>
                 <div className="cartitems-promocode">
                     <p>Have a promo code?</p>
