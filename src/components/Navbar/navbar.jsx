@@ -43,7 +43,7 @@ const Navbar = () => {
                 <Link to={'/contact'} className='nav-link active'>Contact</Link>
               </li>
               <li className="nav-item">
-                <Link to={'medicines'} className="nav-link active" >Medicens</Link>
+                <Link to={"/medicines"} className="nav-link active" >Medicens</Link>
               </li>
               <li className="nav-item">
                 <Link to={'/categories'} className="nav-link active" >Categories</Link>
