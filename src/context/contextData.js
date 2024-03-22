@@ -34,6 +34,7 @@ export default function ContextDataProvider(props) {
 
     function addToCart(itemId) {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        window.scrollTo(0, 0);
     }
 
     function removeFromCart(itemId) {
