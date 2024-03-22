@@ -47,6 +47,7 @@ export default function Medicine() {
 
     const { name } = useParams();
     const [medicine, setMedicine] = useState(null);
+    
     // console.log(medicine);
     const[mediceneSameCategory,setmediceneSameCategory]=useState([])
 

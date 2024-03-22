@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './BestSellers.css'; // Import the CSS file
-import image1 from '../../assets/logo.png';
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
-// import Slider from 'react-slick';
+import { ContextData } from '../../context/contextData';
+import { Link } from 'react-router-dom';
 
 
 const BestSellersComponent = () => {
+
+    const {allMedicine}=useContext(ContextData);
+
+    const randomProducts = allMedicine.sort(() => Math.random()).slice(0, 8);
     const settings = {
         dots: true,
         infinite: true,
@@ -50,54 +54,17 @@ const BestSellersComponent = () => {
             <h2 className="BestSellers-header">Best Sellers</h2>
             <div className="slider-container">
                 <Slider {...settings}>
-                    <div>
-                        <img src={image1} alt="Image 1" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 2" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 3" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 4" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
-                    <div>
-                        <img src={image1} alt="Image 5" className="slider-image" />
-                    </div>
+                    {randomProducts.map((medicene,index)=>{
+                        return(
+                            <>
+                            <div key={index} className="slider-container">
+                                <Link to={`/medicines/${medicene.name}`}>
+                                    <img src={medicene.image} alt={medicene.name} className='slider-image' style={{ height: "200px", objectFit: "cover", objectPosition: "center", borderRadius: "10px" }} />
+                                </Link>
+                            </div>
+                            </>
+                        )
+                    })}
                 </Slider>
             </div>
         </div>
