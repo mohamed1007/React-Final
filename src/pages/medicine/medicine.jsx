@@ -113,7 +113,7 @@ export default function Medicine() {
                                     <li className="list-group-item"><strong>Price:</strong> {medicine.price}</li>
                                 </ul>
                                 <div className="mt-3">
-                                    <Link className="btn btn-outline-warning d-block ms-auto text-dark" onClick={()=>addToCart(medicine._id)}>Add to Cart <i className="fa-solid fa-cart-shopping"></i></Link>
+                                    <Link to="/cart" className="btn btn-outline-success d-block ms-auto" onClick={()=>addToCart(medicine._id)}>Add to Cart</Link>
                                 </div>
                             </div>
                         </div>

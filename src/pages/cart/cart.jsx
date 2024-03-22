@@ -9,7 +9,7 @@ export default function Cart() {
     const{decodedToken,allMedicine,cartItems,removeFromCart,getTotalPrice}=useContext(ContextData);
 
     const [order,setOrder]=useState({})
-    console.log(order);
+    
     const handleProceedToCheckout = () => {
         const items = allMedicine
             .filter(item => cartItems[item._id] > 0)
@@ -19,7 +19,6 @@ export default function Cart() {
             email:decodedToken.email,
             items:[...items],
         });
-        
     };
     
     return (

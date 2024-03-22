@@ -80,7 +80,7 @@ const Navbar = () => {
                                 ))}
                             </datalist>
                             <button className="btn btn-dark" type="submit">
-                              <i className="fa-solid fa-magnifying-glass" style={{color: 'white'}} />
+                            <i className="fa-solid fa-magnifying-glass" style={{color: 'white'}} />
                             </button>
                         </div>
                     </form>
