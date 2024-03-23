@@ -23,8 +23,8 @@ export default function Medicines() {
     }, []);
 
     // Calculate the index of the first and last medicine to display on the current page
-    const indexOfLastMedicine = currentPage * 10;
-    const indexOfFirstMedicine = indexOfLastMedicine - 10;
+    const indexOfLastMedicine = currentPage * 9;
+    const indexOfFirstMedicine = indexOfLastMedicine - 9;
     const currentMedicines = medicines.slice(indexOfFirstMedicine, indexOfLastMedicine);
 
     // Change page

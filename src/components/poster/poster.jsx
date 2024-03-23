@@ -3,6 +3,7 @@ import "./poster.css"
 import find from "../../assets/search.png"
 import arrow from "../../assets/arrow.png"
 import doctor from "../../assets/doctor.webp"
+import { Link } from 'react-router-dom';
 
 const Poster = () =>{
     return(
@@ -17,12 +18,14 @@ const Poster = () =>{
                     <p>Your</p>
                     <p>Medicine</p>
                 </div>
+                <Link className='Link' to = { "/medicines" }>
                 <div className='latest-btn'>
                     <div>
                         Browse medicines
                     </div>
                 <img src={arrow} alt="" className='arrow' />
                 </div>
+                </Link>
             </div>
             <div className="main-right">
                 <img src={doctor} alt="" className='doctor' />
