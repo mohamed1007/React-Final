@@ -16,6 +16,8 @@ import IsLogin from './context/isLogin.js';
 import Cart from './pages/cart/cart.jsx';
 import MainLayout from './Layouts/mainLayout/mainLayout.jsx';
 import OrderHistory from './pages/orderHistory/orderHistory.jsx';
+import Services from './pages/services/services.jsx';
+import Prescription from './pages/prescription/prescription.jsx';
 
 
 
@@ -43,6 +45,8 @@ const App = () => {
           <Route path="/about" element={<MainLayout><About/></MainLayout>} />
           <Route path="/cart" element={<MainLayout><IsLogin><Cart/></IsLogin></MainLayout>} />    
           <Route path='/orderHistory' element={<MainLayout><IsLogin><OrderHistory/></IsLogin></MainLayout>}/>
+          <Route path="/prescription" element={<MainLayout><IsLogin><Prescription/></IsLogin></MainLayout>} />
+          <Route path="/services" element={<MainLayout><Services/></MainLayout>} />
         </Routes>
       </div>
     </Router>
