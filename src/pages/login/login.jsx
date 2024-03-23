@@ -9,7 +9,6 @@ import './login.css'
 const Login = () => {
     let navigate = useNavigate();
     let {token,setToken}=useContext(ContextData)
-    // console.log(token);
     const login = async (userData) => {
         try {
             const { data } = await axios.post('http://localhost:3000/signin', userData);

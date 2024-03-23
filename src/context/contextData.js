@@ -7,11 +7,23 @@ export const ContextData = createContext();
 export default function ContextDataProvider(props) {
     const [allMedicine, setAllMedicine] = useState([]);
     const [token, setToken] = useState(null);
-
     const [cartItems, setCartItems] = useState({});
+    const [email, setEmail] = useState("");
     // console.log(cartItems);
+
+    const getEmail = () => {
+        try {
+            const codeEmail = localStorage.getItem('token');
+            const email = codeEmail ? jwtDecode(codeEmail) : null;
+            setEmail(email.email);
+            return email;
+        } catch (error) {
+            console.error('Error getting email:', error);
+        }
+    }
     useEffect(() => {
         getAllMedicenes();
+        getEmail();
     }, []);
 
     async function getAllMedicenes() {
@@ -24,7 +36,7 @@ export default function ContextDataProvider(props) {
         }
     }
 
-    
+
 
     function createDefaultCart(medicines) {
         let cart = {};
@@ -75,7 +87,9 @@ export default function ContextDataProvider(props) {
         addToCart,
         removeFromCart,
         getTotalCartItems,
-        getTotalPrice
+        getTotalPrice,
+        getEmail,
+        email
     };
 
     return (
