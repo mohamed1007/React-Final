@@ -14,8 +14,8 @@
 .slider-image {
     width: 80%;
     height: auto;
-    border-radius: 50px;
-    border: 1px black solid; /* Add border-radius if needed */
+    border-radius: 5px; /* Add border-radius */
+    border: 1px black solid; /* Add border if needed */
     transition: transform 0.3s ease;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
     margin: 30px;

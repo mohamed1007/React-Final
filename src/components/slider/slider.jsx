@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './slider.css'; // Import the CSS file
-import image1 from '../../assets/logo.png';
 import next from "../../assets/next.png";
 import prev from "../../assets/prev.webp";
 import axios from 'axios';
@@ -66,7 +65,7 @@ const SliderComponent = () => {
                     {categories.map((category, index) => (
                         <div key={index}>
                         <Link to={`/category/${category.name}`}>
-                        <img src={category.image} alt="Image 1" className="slider-image"  /> 
+                            <img src={category.image} alt="Image 1" className="slider-image" /> 
                         </Link>
                     </div>
                     ))}

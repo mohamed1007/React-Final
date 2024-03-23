@@ -3,7 +3,7 @@
 
 .main-poster{
     height: 100vh;
-    background: linear-gradient(180deg,aquamarine 0%, #e1ffea22 60%) !important ;
+    background: linear-gradient(180deg,pink 0%, #e1ffea22 60%) !important ;
     display: flex;
 }
 
@@ -48,7 +48,7 @@
     height: 70px;
     border-radius: 75px;
     margin-top: 30px;
-    background: orangered;
+    background: red;
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -70,3 +70,6 @@
     height: auto;
     width: auto;
 }
+.Link {
+    text-decoration: none;
+  }
