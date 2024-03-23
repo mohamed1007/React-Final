@@ -10,7 +10,6 @@ const Prescription = () => {
     const [allMessages, setAllMessages] = useState([]);
     const [messageError, setMessageError] = useState(false);
 
-
     const sendMessage = async () => {
         try {
         const userMessage = {
@@ -27,15 +26,13 @@ const Prescription = () => {
     const getAllMessageByEmail = async () => {
         try {
         const { data } = await axios.get(`http://localhost:3000/getAllPrescriptionsByCustomerEmail/${decodedToken?.email}`);
-        setAllMessages(data.newPrescription);
-        console.log(data.newPrescription);
+        setAllMessages(data.prescriptions);
+        // console.log(allMessages);
         } catch (error) {
         console.error('Error getting messages:', error);
         }
     }
-    useEffect(() => {
-        getAllMessageByEmail();
-    }, []);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,6 +44,9 @@ const Prescription = () => {
         setMessage("");
         setMessageError(false);
     }
+    useEffect(() => {
+        getAllMessageByEmail();
+    }, []);
 
     return (
         <div className="container mt-5 mb-5">
@@ -74,7 +74,9 @@ const Prescription = () => {
                 </div>
                 <ul className="list-unstyled text-end">
                     <li className="text-primary">Sent Message <i className="fas fa-envelope"></i></li>
-                    
+                    {allMessages.map((message, index) => (
+                    <li key={index} className="messageBody">{message.message}</li>
+                    ))}
                 </ul>
                 </div>
                 <hr />

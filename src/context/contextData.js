@@ -24,6 +24,8 @@ export default function ContextDataProvider(props) {
         }
     }
 
+    
+
     function createDefaultCart(medicines) {
         let cart = {};
         for (const medicine of medicines) {

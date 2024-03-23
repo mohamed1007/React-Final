@@ -18,22 +18,26 @@ const OrderHistory = () => {
 
     useEffect(() => {
         getAllOrdersByEmail();
-    }, []);
+    }, [allOrders]);
 
     return (
         <div className="orderHistory mt-5">
-            <table className="table table-striped">
+            <h2 className="text-center mb-4">Order History</h2>
+            <table className="table table-striped table-bordered">
                 <thead className="table-dark">
                     <tr>
-                        <th scope="col">Medicine Name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total Price</th>
-                        <th scope="col">Order Status</th>
+                        
+                        <th>Medicine Name</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                        <th>Message From Pharmacist</th>
                     </tr>
                 </thead>
                 <tbody>
                     {allOrders.map((order, index) => (
                         <tr key={index}>
+                            
                             <td>
                                 {order.items.map((medicine, index) => (
                                     <div key={index}>{medicine.name}</div>
@@ -46,6 +50,7 @@ const OrderHistory = () => {
                             </td>
                             <td>{order.total}</td>
                             <td>{order.status}</td>
+                            <td>{order.message}</td>
                         </tr>
                     ))}
                 </tbody>
