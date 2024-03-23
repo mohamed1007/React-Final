@@ -9,7 +9,7 @@ export default function ContextDataProvider(props) {
     const [token, setToken] = useState(null);
 
     const [cartItems, setCartItems] = useState({});
-    console.log(cartItems);
+    // console.log(cartItems);
     useEffect(() => {
         getAllMedicenes();
     }, []);

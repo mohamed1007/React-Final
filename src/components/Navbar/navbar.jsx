@@ -32,7 +32,7 @@ const Navbar = () => {
         navigate(`/medicines/${searchQuery}`);
         setSearchQuery(''); // Clear the search query after navigation
     };
-    console.log(allMedicine);
+    // console.log(allMedicine);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light custom-navbar">

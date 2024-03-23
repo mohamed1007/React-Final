@@ -1,26 +1,63 @@
+import React, { useContext, useEffect, useState } from 'react';
+import './cart.css';
+import { ContextData } from '../../context/contextData';
+import iconDelete from '../../assets/cart_cross_icon.png';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-
-import React, { useContext, useState } from 'react'
-import './cart.css'
-import { ContextData } from '../../context/contextData'
-import iconDelete from '../../assets/cart_cross_icon.png'
 export default function Cart() {
-    
-    const{decodedToken,allMedicine,cartItems,removeFromCart,getTotalPrice}=useContext(ContextData);
+    const { decodedToken, allMedicine, cartItems, removeFromCart, getTotalPrice } = useContext(ContextData);
+    const [checkOut, setCheckOut] = useState(false);
+    const [address, setAddress] = useState('');
+    const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
-    const [order,setOrder]=useState({})
-    
     const handleProceedToCheckout = () => {
+        setCheckOut(true);
+    };
+    const handleAddressInputChange = (event) => {
+        setAddress(event.target.value);
+    };
+    const placeOrder = async () => {
+        if (isPlacingOrder) {
+            return;
+        }
+        setIsPlacingOrder(true);
         const items = allMedicine
             .filter(item => cartItems[item._id] > 0)
-            .map(item => item.name);
-
-        setOrder({
-            email:decodedToken.email,
-            items:[...items],
+            .map(item => ({
+                name: item.name,
+                quantity: cartItems[item._id]
+            }));
+        const order = {
+            customerEmail: decodedToken.email,
+            items: items,
+            total: getTotalPrice(),
+            address: address
+        };
+        console.log(order);
+        await sendOrder(order);
+        allMedicine.forEach(item => {
+            if (cartItems[item._id] > 0) {
+                removeFromCart(item._id);
+            }
         });
+        setIsPlacingOrder(false);
+        setCheckOut(false);
+        setAddress('');
     };
-    
+    const canProceedToCheckout = allMedicine.some(item => cartItems[item._id] > 0);
+
+    async function sendOrder(order) {
+        try {
+            let { data } = await axios.post('http://localhost:3000/addOrder', order);
+            console.log(data);
+            // Handle success response if needed
+        } catch (error) {
+            console.error('Error placing order:', error);
+            // Handle error if needed
+        }
+    }
+
     return (
         <div className='CartItems'>
             <div className="CartIt-format-main">
@@ -32,24 +69,24 @@ export default function Cart() {
                 <p>Remove</p>
             </div>
             <hr />
-            
-            {allMedicine.map((item)=>{
-                if(cartItems[item._id] > 0 ){
-                    return  <div>
-                                <div className="CartItems-format CartIt-format-main">
-                                    <img className='CartIcon-product-icon' src={item.image} alt="" />
-                                    <p>{item.name}</p>
-                                    <p>${item.price}</p>
-                                    <button className='CartItems-quantity'>{cartItems[item._id]}</button>
-                                    <p>${item.price*cartItems[item._id]}</p>
-                                    <img className='CartItems-delete' src={iconDelete} onClick={()=>removeFromCart(item._id)} alt="" />
-                                </div>
-                                <hr />
+
+            {allMedicine.map((item) => {
+                if (cartItems[item._id] > 0) {
+                    return (
+                        <div key={item._id}>
+                            <div className="CartItems-format CartIt-format-main">
+                                <img className='CartIcon-product-icon' src={item.image} alt="" />
+                                <p>{item.name}</p>
+                                <p>${item.price}</p>
+                                <button className='CartItems-quantity'>{cartItems[item._id]}</button>
+                                <p>${item.price * cartItems[item._id]}</p>
+                                <img className='CartItems-delete' src={iconDelete} onClick={() => removeFromCart(item._id)} alt="" />
                             </div>
+                            <hr />
+                        </div>
+                    );
                 }
-                else{
-                    return null
-                }
+                return null;
             })}
             <div className="cartitems-down">
                 <div className="cartitems-total">
@@ -58,8 +95,6 @@ export default function Cart() {
                         <div className="cartitems-total-price">
                             <p>Subtotal</p>
                             <p>${getTotalPrice()}</p>
-                            {/* <p>$ getTotalCartAmount</p> */}
-
                         </div>
                         <hr />
                         <div className="cartitems-total-price">
@@ -70,19 +105,25 @@ export default function Cart() {
                         <div className="cartitems-total-price">
                             <h3>Total</h3>
                             <h3>${getTotalPrice()}</h3>
-                            {/* <h3>$ getTotalCartAmount</h3> */}
                         </div>
                     </div>
-                    <button onClick={handleProceedToCheckout}>PROCEED TO Checkout</button>
+
+                    <button onClick={handleProceedToCheckout} disabled={!canProceedToCheckout}>PROCEED TO Checkout</button>
+                    {checkOut && (
+                        <div className="cartitems-promoBox">
+                            <input type="text" placeholder='Enter your address' className='cartitems-address' value={address} onChange={handleAddressInputChange} />
+                            <Link to={'/orderHistory'}><button onClick={placeOrder} disabled={isPlacingOrder}>Place Order</button></Link>
+                        </div>
+                    )}
                 </div>
                 <div className="cartitems-promocode">
                     <p>Have a promo code?</p>
                     <div className="cartitems-promoBox">
-                        <input type="text" placeholder='Enter promo code' />
+                        <input placeholder='Enter your promo code' type="text" />
                         <button>Submit</button>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -15,6 +15,7 @@ import { ContextData } from './context/contextData.js';
 import IsLogin from './context/isLogin.js';
 import Cart from './pages/cart/cart.jsx';
 import MainLayout from './Layouts/mainLayout/mainLayout.jsx';
+import OrderHistory from './pages/orderHistory/orderHistory.jsx';
 
 
 
@@ -40,7 +41,8 @@ const App = () => {
           <Route path="/categories" element={<MainLayout><Categories/></MainLayout>} />
           <Route path="/category/:name" element={<MainLayout><Category/></MainLayout>} />
           <Route path="/about" element={<MainLayout><About/></MainLayout>} />
-          <Route path="/cart" element={<MainLayout><IsLogin><Cart/></IsLogin></MainLayout>} />
+          <Route path="/cart" element={<MainLayout><IsLogin><Cart/></IsLogin></MainLayout>} />    
+          <Route path='/orderHistory' element={<MainLayout><IsLogin><OrderHistory/></IsLogin></MainLayout>}/>
         </Routes>
       </div>
     </Router>
