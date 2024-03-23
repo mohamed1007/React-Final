@@ -3,7 +3,7 @@
 
 .main-poster{
     height: 100vh;
-    background: linear-gradient(180deg,pink 0%, #e1ffea22 60%) !important ;
+    background: linear-gradient(180deg,orangered 0%, #e1ffea22 60%) !important ;
     display: flex;
 }
 
