@@ -51,20 +51,20 @@ const Navbar = () => {
                             <Link to={'/'} className='nav-link active'>Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/about'} className='nav-link active'>About</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={'/contact'} className='nav-link active'>Contact</Link>
+                            <Link to={'/categories'} className="nav-link active" >Categories</Link>
                         </li>
                         <li className="nav-item">
                             <Link to={"/medicines"} className="nav-link active" >Medicines</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/categories'} className="nav-link active" >Categories</Link>
+                            <Link to={'/about'} className='nav-link active'>About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={'/contact'} className='nav-link active'>Contact</Link>
                         </li>
                     </ul>
                     <form className="d-flex" onSubmit={handleSearchSubmit}>
-                        <div className="input-group mt-4">
+                        <div className="input-group mt-2">
                             <input
                                 className="form-control"
                                 type="search"
