@@ -32,7 +32,6 @@ const Navbar = () => {
         navigate(`/medicines/${searchQuery}`);
         setSearchQuery(''); // Clear the search query after navigation
     };
-    // console.log(allMedicine);
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -51,16 +50,20 @@ const Navbar = () => {
                             <Link to={'/'} className='nav-link active'>Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/categories'} className="nav-link active" >Categories</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/medicines"} className="nav-link active" >Medicines</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to={'/about'} className='nav-link active'>About</Link>
                         </li>
                         <li className="nav-item">
                             <Link to={'/contact'} className='nav-link active'>Contact</Link>
+                        </li>
+                        <li className="nav-item">
+                            <select className="form-select " aria-label="Default select example" onChange={(e) => navigate(e.target.value)} style={{fontSize:"30px" , fontWeight:"700", border:"none", boxShadow:"none"}}>
+                                <option selected disabled>Browse Shop</option>
+                                <option value="/categories">Categories</option>
+                                <option value="/medicines">Medicines</option>
+                                <option value="/prescription">Prescription</option>
+                                <option value="/orderHistory">Order History</option>
+                                <option value="/services">Services</option>
+                            </select>
                         </li>
                     </ul>
                     <form className="d-flex" onSubmit={handleSearchSubmit}>
