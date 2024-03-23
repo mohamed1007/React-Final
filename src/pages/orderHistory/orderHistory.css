@@ -1,0 +1,33 @@
+.orderHistory {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.table tbody tr:hover {
+    background-color: #ced4da;
+}

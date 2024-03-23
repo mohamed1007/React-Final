@@ -113,9 +113,11 @@ export default function Cart() {
                         <div className="cartitems-promoBox">
                             <input type="text" placeholder='Enter your address' className='cartitems-address' value={address} onChange={handleAddressInputChange} />
                             <Link to={'/orderHistory'}><button onClick={placeOrder} disabled={isPlacingOrder}>Place Order</button></Link>
+                            
                         </div>
                     )}
                 </div>
+                <Link to={'/orderHistory'}><button>history Order</button></Link>
                 <div className="cartitems-promocode">
                     <p>Have a promo code?</p>
                     <div className="cartitems-promoBox">
