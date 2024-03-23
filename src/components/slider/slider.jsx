@@ -66,7 +66,7 @@ const SliderComponent = () => {
                     {categories.map((category, index) => (
                         <div key={index}>
                         <Link to={`/category/${category.name}`}>
-                        <img src={category.image} alt="Image 1" className="slider-image" /> 
+                        <img src={category.image} alt="Image 1" className="slider-image"  /> 
                         </Link>
                     </div>
                     ))}
