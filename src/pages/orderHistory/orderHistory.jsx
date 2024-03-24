@@ -2,23 +2,28 @@ import React, { useContext, useEffect, useState } from 'react';
 import './orderHistory.css';
 import { ContextData } from '../../context/contextData';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const OrderHistory = () => {
-    const { decodedToken } = useContext(ContextData);
+    const { decodedToken,email,getEmail } = useContext(ContextData);
     const [allOrders, setAllOrders] = useState([]);
+    // const [email, setEmail] = useState("");
 
     const getAllOrdersByEmail = async () => {
         try {
             const { data } = await axios.get(`http://localhost:3000/getAllOrdersByCustomerId/${decodedToken?.email}`);
+            console.log();
             setAllOrders(data.allOrders);
         } catch (error) {
             console.error('Error getting orders:', error);
         }
     }
-
+    useEffect(() => {
+        getEmail();
+    }, []);
     useEffect(() => {
         getAllOrdersByEmail();
-    }, [decodedToken]);
+    }, [allOrders]);
 
     return (
         <div className="container ordhis">

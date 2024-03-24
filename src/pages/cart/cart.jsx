@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import './cart.css';
 import { ContextData } from '../../context/contextData';
 import iconDelete from '../../assets/cart_cross_icon.png';
+import iconAdd from '../../assets/plus.png'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function Cart() {
-    const { decodedToken, allMedicine, cartItems, removeFromCart, getTotalPrice } = useContext(ContextData);
+    const { decodedToken, allMedicine, cartItems, removeFromCart, getTotalPrice,services,addToCart } = useContext(ContextData);
     const [checkOut, setCheckOut] = useState(false);
     const [address, setAddress] = useState('');
     const [isPlacingOrder, setIsPlacingOrder] = useState(false);
@@ -66,7 +67,7 @@ export default function Cart() {
                 <p>Price</p>
                 <p>Quantity</p>
                 <p>Total</p>
-                <p>Remove</p>
+                <p>Remove / Add</p>
             </div>
             <hr />
 
@@ -80,7 +81,10 @@ export default function Cart() {
                                 <p>${item.price}</p>
                                 <button className='CartItems-quantity'>{cartItems[item._id]}</button>
                                 <p>${item.price * cartItems[item._id]}</p>
-                                <img className='CartItems-delete' src={iconDelete} onClick={() => removeFromCart(item._id)} alt="" />
+                                <div className="CartItems-icons">
+                                    <img className='CartItems-delete' style={{ cursor: 'pointer', width: '20px', height: '20px' ,display:"inline-block",marginLeft:"30px" }} src={iconDelete} onClick={() => removeFromCart(item._id)} alt="" />
+                                    <img className='CartItems-add' style={{ cursor: 'pointer', width: '30px', height: '30px' ,display:"inline-block" }} src={iconAdd} onClick={() => addToCart(item._id, "medicine")} alt="" />
+                                </div>
                             </div>
                             <hr />
                         </div>
