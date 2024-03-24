@@ -1,29 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import './services.css'
-import servImage from "../../assets/logo.png"
-import blood from "../../assets/blood.png"
-import axios from 'axios';
+
 import ServPoster from '../../components/servPoster/servPoster';
+import { ContextData } from '../../context/contextData';
+import { Link } from 'react-router-dom';
 
 
 export default function Services() {
 
-    const [services,setServices]=useState([])
-
-    const getServices = async () => {
-        try {
-            let { data } = await axios.get('http://localhost:3000/getAllServices');
-            console.log(data);
-            // setServices(data); 
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    useEffect(() => {
-        getServices();
-    }, [])
-
+    const {services,addToCart}=useContext(ContextData)
+    // console.log(services[0]);
     return (
+       
         <div className='container-fluid'>
             <ServPoster></ServPoster>
             <div className="container">
@@ -32,12 +20,12 @@ export default function Services() {
                     <div className='servicePoster'>
                         <div className="servicePoster-left">
                             <h1>Measure</h1>
-                            <h1>Your "service name"</h1><br />
-                            <p>Price : "service price"</p><br />
-                            <button className='btn btn-outline-info btn-sm w-50 text-black'>Order Service</button>
+                            <h1>Your {services[0]?.name}</h1><br />
+                            <p>Price : {services[0]?.price} LE</p><br />
+                            <Link><button onClick={()=>addToCart(services[0]?._id,"service")} className='btn btn-outline-info btn-sm w-50 text-black'>Order Service</button></Link>
                         </div>
                         <div className="servicePoster-right">
-                            <img src={blood} alt="Medical Services" />
+                            <img src={services[0]?.image} alt="Medical Services" />
                         </div>
                     </div>
                 </div>
@@ -49,12 +37,13 @@ export default function Services() {
                     <div className='servicePoster'>
                         <div className="servicePoster-left">
                             <h1>Measure</h1>
-                            <h1>Your "service name"</h1><br />
-                            <p>Price : "service price"</p><br />
-                            <button className='btn btn-outline-info btn-sm w-50 text-black'>Order Service</button>
+                            <h1>Your {services[1]?.name}</h1><br />
+                            <p>Price : {services[1]?.price} LE</p><br />
+                            <Link><button onClick={()=>addToCart(services[1]?._id,"service")} className='btn btn-outline-info btn-sm w-50 text-black'>Order Service</button></Link>
+
                         </div>
                         <div className="servicePoster-right">
-                            <img src={servImage} alt="Medical Services" />
+                            <img src={services[1]?.image} alt="Medical Services" />
                         </div>
                     </div>
                 </div>
@@ -64,12 +53,13 @@ export default function Services() {
                     <div className='servicePoster'>
                         <div className="servicePoster-left">
                             <h1>Measure</h1>
-                            <h1>Your "service name"</h1><br />
-                            <p>Price : "service price"</p><br />
-                            <button className='btn btn-outline-info btn-sm w-50 text-black'>Order Service</button>
+                            <h1>Your {services[2]?.name}</h1><br />
+                            <p>Price : {services[2]?.price} LE</p><br />
+                            <Link><button onClick={()=>addToCart(services[2]?._id,"service")} className='btn btn-outline-info btn-sm w-50 text-black'>Order Service</button></Link>
+
                         </div>
                         <div className="servicePoster-right">
-                            <img src={servImage} alt="Medical Services" />
+                            <img src={services[2]?.image} alt="Medical Services" />
                         </div>
                     </div>
                 </div>
@@ -77,6 +67,5 @@ export default function Services() {
             </div> 
             </div> 
         </div>
-  
     )
 }

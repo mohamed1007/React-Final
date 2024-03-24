@@ -1,10 +1,6 @@
 import axios from "axios"
 import { createContext } from "react"
 
-
-
-
-
 export const ServicesLogic=createContext()
 
 export default function ServicesProvider(props) {
@@ -19,6 +15,14 @@ export default function ServicesProvider(props) {
     }catch (error) {
             console.error('Error fetching services:', error);
         }
+    }
+
+    function createDefaultCart(medicines) {
+        let cart = {};
+        for (const service of services) {
+            cart[service._id] = 0;
+        }
+        return cart;
     }
 
     useEffect(() => {

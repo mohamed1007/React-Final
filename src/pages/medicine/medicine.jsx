@@ -72,6 +72,11 @@ export default function Medicine() {
         }
     }
     
+    const scrollToTopAndSetMedicine = (medicene) => {
+        setMedicine(medicene);
+        window.scrollTo(480, 480);
+    };
+    
 
 
     useEffect(() => {
@@ -113,7 +118,11 @@ export default function Medicine() {
                                     <li className="list-group-item"><strong>Price:</strong> {medicine.price}</li>
                                 </ul>
                                 <div className="mt-3">
-                                    <Link to="/cart" className="btn btn-outline-success d-block ms-auto" onClick={()=>addToCart(medicine._id)}>Add to Cart</Link>
+                                    {medicine.stock > 0 ? (
+                                        <Link to="/cart" className="btn btn-outline-success d-block ms-auto" onClick={() => addToCart(medicine._id, "medicine")}>Add to Cart</Link>
+                                    ) : (
+                                        <button className="btn btn-outline-success d-block ms-auto" disabled>Out of Stock</button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -129,9 +138,9 @@ export default function Medicine() {
                     return(
                         <>
                         <div key={index} className="slider-container">
-                            <Link>
-                                <img onClick={()=>setMedicine(medicene)} src={medicene.image} alt={medicene.name} className='slider-image' style={{ height: "200px", objectFit: "cover", objectPosition: "center", borderRadius: "50px" }} />
-                            </Link>
+                        <Link onClick={() => scrollToTopAndSetMedicine(medicene)}>
+                            <img src={medicene.image} alt={medicene.name} className='slider-image' style={{ height: "200px", objectFit: "cover", objectPosition: "center", borderRadius: "50px" }} />
+                        </Link>
                         </div>
                         </>
                     )
