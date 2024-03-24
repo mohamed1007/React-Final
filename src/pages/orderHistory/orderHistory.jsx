@@ -18,43 +18,45 @@ const OrderHistory = () => {
 
     useEffect(() => {
         getAllOrdersByEmail();
-    }, [allOrders]);
+    }, [decodedToken]);
 
     return (
-        <div className="orderHistory mt-5">
-            <h2 className="text-center mb-4">Order History</h2>
-            <table className="table table-striped table-bordered">
-                <thead className="table-dark">
-                    <tr>
-                        
-                        <th>Medicine Name</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                        <th>Status</th>
-                        <th>Message From Pharmacist</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {allOrders.map((order, index) => (
-                        <tr key={index}>
-                            
-                            <td>
-                                {order.items.map((medicine, index) => (
-                                    <div key={index}>{medicine.name}</div>
-                                ))}
-                            </td>
-                            <td>
-                                {order.items.map((medicine, index) => (
-                                    <div key={index}>{medicine.quantity}</div>
-                                ))}
-                            </td>
-                            <td>{order.total}</td>
-                            <td>{order.status}</td>
-                            <td>{order.message}</td>
+        <div className="container ordhis">
+            <div className="orderHistory mt-5">
+                <h2 className="text-center mb-4">Order History</h2>
+                <table className="table table-striped table-bordered">
+                    <thead className="table-dark" style={{backgroundColor:"#F82B00"}}>
+                        <tr>
+                            <th>#</th>
+                            <th>Medicine Name</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Status</th>
+                            <th>Message From Pharmacist</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {allOrders.map((order, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    {order.items.map((medicine, index) => (
+                                        <div key={index}>{medicine.name}</div>
+                                    ))}
+                                </td>
+                                <td>
+                                    {order.items.map((medicine, index) => (
+                                        <div key={index}>{medicine.quantity}</div>
+                                    ))}
+                                </td>
+                                <td>{order.total}</td>
+                                <td>{order.status}</td>
+                                <td>{order.message}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

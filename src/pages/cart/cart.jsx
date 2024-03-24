@@ -117,7 +117,6 @@ export default function Cart() {
                         </div>
                     )}
                 </div>
-                <Link to={'/orderHistory'}><button>history Order</button></Link>
                 <div className="cartitems-promocode">
                     <p>Have a promo code?</p>
                     <div className="cartitems-promoBox">
