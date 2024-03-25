@@ -11,7 +11,7 @@ export default function Services() {
     // console.log(services);
     return (
     
-        <div className='container-fluid'>
+        <div className='container-fluid' style={{marginTop:"4rem"}}>
             <ServPoster></ServPoster>
             <div className="container">
             <div className="row">

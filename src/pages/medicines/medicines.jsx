@@ -31,7 +31,7 @@ export default function Medicines() {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-        <div className='container-fluid'>
+        <div className='container-fluid ' style={{marginTop:"4rem"}}>
             <MedicinePoster />
             <div className="row p-5">
                 <div className="col-3 mt-5"> {/* Sidebar column */}

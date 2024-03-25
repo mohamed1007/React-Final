@@ -9,7 +9,7 @@ export default function Category() {
     const { name } = useParams();
     console.log(name);
     const [medicines, setMedicines] = useState([]);
-
+    console.log(medicines);
     async function getMedicines() {
         try {
             let { data } = await axios.get(`http://localhost:3000/getMedicineByCategory/${name}`);
@@ -26,8 +26,8 @@ export default function Category() {
 
     return (
         <>
-        <div className='container-fluid mb-5'>
-        <MedicinePoster />
+        <div className='container-fluid mb-5' style={{marginTop:"4rem"}}>
+        <MedicinePoster  />
         </div>
     {medicines.length === 0 ? (
     <h1 className="text-center mt-5 mb-5">No Medicines Found</h1>
@@ -39,7 +39,7 @@ export default function Category() {
             <Sidebar></Sidebar>
         </div>
         <div className="col-9">
-            <h1 style={{display:"flex" , alignItems:"center" , justifyContent:"center"}}><span style={{fontSize:"3rem" , textAlign:"center", margin:"2rem", borderBottom:"1px black solid", fontFamily:'"Red Hat Mono", monospace'}}>Category Name</span></h1>
+            <h1 style={{display:"flex" , alignItems:"center" , justifyContent:"center"}}><span style={{fontSize:"3rem" , textAlign:"center", margin:"2rem", borderBottom:"1px black solid", fontFamily:'"Red Hat Mono", monospace'}}>Category Name : <span style={{color:"orangered", fontSize:"3rem"}}>{medicines[0].category}</span></span></h1>
             <div className="row">
             {medicines.map((medicine, index) => (
                         <div className='col-md-4' key={index}>
