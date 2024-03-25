@@ -4,7 +4,7 @@ import { ContextData } from '../../context/contextData';
 import axios from 'axios';
 
 const OrderHistory = () => {
-    const { decodedToken,getEmail } = useContext(ContextData);
+    const { decodedToken,email ,getEmail } = useContext(ContextData);
     const [allOrders, setAllOrders] = useState([]);
 
     const getAllOrdersByEmail = async () => {
@@ -20,8 +20,11 @@ const OrderHistory = () => {
         getEmail();
     }, []);
     useEffect(() => {
+        if(email){
         getAllOrdersByEmail();
-    }, [allOrders]);
+    }
+    }, [email,allOrders]);
+
 
     return (
         <div className="container ordhis">

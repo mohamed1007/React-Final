@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import { ServicesLogic } from '../../context/services';
 
 export default function Cart() {
-    const { decodedToken, allMedicine, cartItems, removeFromCart, getTotalPrice, addToCart } = useContext(ContextData);
-    const {services,cartItemsServ,removeFromCartSer,getTotalPriceSer,addToCartSer}=useContext(ServicesLogic)
+    const {decodedToken, allMedicine, cartItems, removeFromCart, getTotalPrice, addToCart } = useContext(ContextData);
+    const {services,cartItemsServ,removeFromCartSer,getTotalPriceSer}=useContext(ServicesLogic)
     const [checkOut, setCheckOut] = useState(false);
     const [address, setAddress] = useState('');
     const [isPlacingOrder, setIsPlacingOrder] = useState(false);
@@ -66,6 +66,8 @@ export default function Cart() {
         setCheckOut(false);
         setAddress('');
     };
+
+    
     const canProceedToCheckout = allMedicine.some(item => cartItems[item._id] > 0);
 
     async function sendOrder(order) {
@@ -96,9 +98,9 @@ export default function Cart() {
                             <div className="CartItems-format CartIt-format-main">
                                 <img className='CartIcon-product-icon' src={item.image} alt="" />
                                 <p>{item.name}</p>
-                                <p>${item.price}</p>
+                                <p>L.E {item.price}</p>
                                 <button className='CartItems-quantity'>{cartItems[item._id]}</button>
-                                <p>${item.price * cartItems[item._id]}</p>
+                                <p>L.E {item.price * cartItems[item._id]}</p>
                                 <div className="CartItems-icons">
                                     <img className='CartItems-delete' style={{ cursor: 'pointer', width: '20px', height: '20px' ,display:"inline-block",marginLeft:"30px" }} src={iconDelete} onClick={() => removeFromCart(item._id)} alt="" />
                                     <img className='CartItems-add' style={{ cursor: 'pointer', width: '30px', height: '30px' ,display:"inline-block" }} src={iconAdd} onClick={() => addToCart(item._id, "medicine")} alt="" />
@@ -118,9 +120,9 @@ export default function Cart() {
                             <div className="CartItems-format CartIt-format-main">
                                 <img className='CartIcon-product-icon' src={service.image} alt="" />
                                 <p>{service.name}</p>
-                                <p>${service.price}</p>
+                                <p>L.E {service.price}</p>
                                 <button className='CartItems-quantity'>{cartItemsServ[service._id]}</button>
-                                <p>${service.price * cartItemsServ[service._id]}</p>
+                                <p>L.E {service.price * cartItemsServ[service._id]}</p>
                                 <div className="CartItems-icons">
                                     <img className='CartItems-delete' style={{ cursor: 'pointer', width: '20px', height: '20px' ,display:"inline-block",marginLeft:"30px" }} src={iconDelete} onClick={() => removeFromCartSer(service._id)} alt="" />
                                 </div>
