@@ -3,6 +3,7 @@ import axios from 'axios'; // Add this line
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import MedicinePoster from '../../components/medicinePoster/medicinePoster';
+import Sidebar from '../../components/sidebar/sidebar';
 
 export default function Category() {
     const { name } = useParams();
@@ -25,15 +26,22 @@ export default function Category() {
 
     return (
         <>
-        <div className='container mb-5'>
+        <div className='container-fluid mb-5'>
         <MedicinePoster />
         </div>
     {medicines.length === 0 ? (
     <h1 className="text-center mt-5 mb-5">No Medicines Found</h1>
 ) : (
-    <div className="container mt-5 mb-5">
-    <div className="row ">
-        {medicines.map((medicine, index) => (
+
+    <div className="container-fluid mt-5 mb-5">
+    <div className="row p-5">
+        <div className="col-3">
+            <Sidebar></Sidebar>
+        </div>
+        <div className="col-9">
+            <h1 style={{display:"flex" , alignItems:"center" , justifyContent:"center"}}><span style={{fontSize:"3rem" , textAlign:"center", margin:"2rem", borderBottom:"1px black solid", fontFamily:'"Red Hat Mono", monospace'}}>Category Name</span></h1>
+            <div className="row">
+            {medicines.map((medicine, index) => (
                         <div className='col-md-4' key={index}>
                                 <div className="card card-medicine m-4">
                                     <div className="card-body">
@@ -48,6 +56,9 @@ export default function Category() {
                             
                         </div>
                     ))}
+            </div>
+        </div>
+    
     </div>
     </div>
 )}

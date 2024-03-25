@@ -6,7 +6,7 @@
     background: linear-gradient(50deg,rgb(230, 255, 255) 0%, rgb(180, 180, 255) 60%,rgb(255, 226, 231)) ;
     display: flex;
     margin-top: 30px;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 .left{
@@ -21,7 +21,7 @@
 
 
 .left p{
-    color: gold;
+    color: black;
     font-size: 50px;
     font-weight: bold;
     margin:40px;
