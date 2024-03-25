@@ -2,12 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import './orderHistory.css';
 import { ContextData } from '../../context/contextData';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
 
 const OrderHistory = () => {
-    const { decodedToken,email,getEmail } = useContext(ContextData);
+    const { decodedToken,getEmail } = useContext(ContextData);
     const [allOrders, setAllOrders] = useState([]);
-    // const [email, setEmail] = useState("");
 
     const getAllOrdersByEmail = async () => {
         try {

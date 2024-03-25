@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import bcrypt from 'bcryptjs';
 const Signup = () => {
     let navigate = useNavigate();
 
