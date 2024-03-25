@@ -44,35 +44,62 @@ export default function ContextDataProvider(props) {
         let {data}=await axios.get('http://localhost:3000/getAllServices')
         // console.log(data.allServices);
         setServices(data.allServices)
-        // setCartItems(createDefaultCart(data.allServices));
+        setCartItems((prev) => {
+            let updatedCart = { ...prev };
+            for (const service of data.allServices) {
+                if (!updatedCart[service._id]) {
+                    updatedCart[service._id] = 0;
+                }
+            }
+            return updatedCart;
+        });
     }catch (error) {
             console.error('Error fetching services:', error);
         }
     }
 
 
-    function createDefaultCart(medicines) {
-        let cart = {};
-        for (const medicine of medicines) {
-            cart[medicine._id] = 0;
-        }
-        return cart;
-    }
-    // function createDefaultCart(items) {
+    // function createDefaultCart(medicines) {
     //     let cart = {};
-    //     for (const item of items) {
-    //         cart[item._id] = 0;
+    //     for (const medicine of medicines) {
+    //         cart[medicine._id] = 0;
     //     }
     //     return cart;
     // }
+    function createDefaultCart(items) {
+        let cart = {};
+        for (const item of items) {
+            cart[item._id] = 0;
+        }
+        return cart;
+    }
 
     // function addToCart(itemId) {
     //     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     //     window.scrollTo(0, 0);
     // }
+    function addToCart(itemId, itemType) {
+        const itemStock = allMedicine.find(item => item._id === itemId)?.stock;
+        if (itemType === 'medicine') {
+            if (itemStock === 0) {
+                alert('Out of stock');
+                return;
+            } else if (itemStock === 1) {
+                alert('Last item in stock');
+            } else if (itemStock === 2) {
+                alert('Only 2 items left in stock');
+            }
+            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        } else if (itemType === 'service') {
+            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+        } else {
+            console.error('Invalid item type:', itemType);
+        }
+        window.scrollTo(0, 0);
+    }
     // function addToCart(itemId, itemType) {
-    //     const itemStock = allMedicine.find(item => item._id === itemId)?.stock;
-    //     if (itemType === 'medicine') {
+    //     if (itemType === 'medicine' || itemType === 'service') {
+    //         const itemStock = itemType === 'medicine' ? allMedicine.find(item => item._id === itemId)?.stock : 1;
     //         if (itemStock === 0) {
     //             alert('Out of stock');
     //             return;
@@ -82,36 +109,47 @@ export default function ContextDataProvider(props) {
     //             alert('Only 2 items left in stock');
     //         }
     //         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    //     } else if (itemType === 'service') {
-    //         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    //         window.scrollTo(0, 0);
     //     } else {
     //         console.error('Invalid item type:', itemType);
     //     }
-    //     window.scrollTo(0, 0);
     // }
 
-    function addToCart(itemId, itemType) {
-        if (itemType === 'medicine' || itemType === 'service') {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-            window.scrollTo(0, 0);
-        } else {
-            console.error('Invalid item type:', itemType);
-        }
-    }   
+    // function addToCart(itemId, itemType) {
+    //     if (itemType === 'medicine' || itemType === 'service') {
+    //         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    //         window.scrollTo(0, 0);
+    //     } else {
+    //         console.error('Invalid item type:', itemType);
+    //     }
+    // }   
     function removeFromCart(itemId) {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     }
 
+    // function getTotalPrice() {
+    //     let totalAmount = 0;
+    //     for (const item in cartItems) {
+    //         if (cartItems[item] > 0) {
+    //             let itemInfo = allMedicine.find((product) => product._id === item);
+    //             totalAmount += itemInfo.price * cartItems[item];
+    //         }
+    //     }
+    //     return totalAmount;
+    // }
     function getTotalPrice() {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
                 let itemInfo = allMedicine.find((product) => product._id === item);
-                totalAmount += itemInfo.price * cartItems[item];
+                if (itemInfo) {
+                    totalAmount += itemInfo.price * cartItems[item];
+                }
             }
         }
         return totalAmount;
     }
+    
 
 
     function getTotalCartItems() {
