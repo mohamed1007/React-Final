@@ -60,7 +60,7 @@ const Navbar = () => {
                                 <option selected disabled>Browse Shop</option>
                                 <option value="/categories">Categories</option>
                                 <option value="/medicines">Medicines</option>
-                                <option value="/prescription">Prescription</option>
+                                {/* <option value="/prescription">Prescription</option> */}
                                 <option value="/orderHistory">Order History</option>
                                 <option value="/services">Services</option>
                             </select>

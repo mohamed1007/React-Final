@@ -28,10 +28,10 @@ const Signup = () => {
     });
 
     return (
-        <div className="container mt-5" style={{height:"100vh"}}>
+        <div className="container mt-5" >
             <div className="row justify-content-center">
                 <div className="col-md-8 mt-5 mb-5">
-                    <div className="card shadow" style={{height:"90vh"}}>
+                    <div className="card shadow" >
                         <div className="card-body">
                             <h2 className="card-title text-center mb-4">Sign Up</h2>
                             <Formik

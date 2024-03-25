@@ -3,10 +3,10 @@
 
 .servPoster{
     height: 40vh;
-    background: linear-gradient(50deg,rgb(163, 255, 163) 0% , aquamarine 60% , rgb(180, 199, 180) ) ;
+    background: linear-gradient(50deg, beige 0% , gold 60% , yellow ) ;
     display: flex;
     margin-top: 30px;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 .serv-left{
@@ -21,7 +21,7 @@
 
 
 .serv-left p{
-    color: gold;
+    color: black;
     font-size: 50px;
     font-weight: bold;
     margin:40px;

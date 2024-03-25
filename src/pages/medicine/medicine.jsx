@@ -101,7 +101,7 @@ export default function Medicine() {
                 <div className="row">
                     <div className="col-md-4">
                         <div className="card border-0 shadow-lg">
-                            <img src={medicine.image} className="card-img-top" alt={medicine.name} style={{ height: '525px', width: "auto", objectFit: 'cover' }} />
+                            <img src={medicine.image} className="card-img-top" alt={medicine.name} style={{ height: 'auto', width: "100%", objectFit: 'cover' }} />
                         </div>
                     </div>
                     <div className="col-md-8 mb-5">
@@ -119,7 +119,7 @@ export default function Medicine() {
                                 </ul>
                                 <div className="mt-3">
                                     {medicine.stock > 0 ? (
-                                        <Link style={{ fontWeight: "bold", fontSize: "20px" }}  to="/cart" className="btn btn-outline-success d-block ms-auto" onClick={() => addToCart(medicine._id, "medicine")}><i className="fa-solid fa-cart-shopping" style={{ marginRight: "15px" }}></i>Add to Cart</Link>
+                                        <Link style={{ fontWeight: "bold", fontSize: "20px" }}  to="/cart" className="btn btn-outline-warning d-block ms-auto text-dark" onClick={() => addToCart(medicine._id, "medicine")}><i className="fa-solid fa-cart-shopping" style={{ marginRight: "15px" }}></i>Add to Cart</Link>
                                     ) : (
                                         <button className="btn btn-outline-success d-block ms-auto" disabled>Out of Stock</button>
                                     )}
@@ -139,7 +139,7 @@ export default function Medicine() {
                         <>
                         <div key={index} className="slider-container">
                         <Link onClick={() => scrollToTopAndSetMedicine(medicene)}>
-                            <img src={medicene.image} alt={medicene.name} className='slider-image' style={{ height: "200px", objectFit: "cover", objectPosition: "center", borderRadius: "50px" }} />
+                            <img src={medicene.image} alt={medicene.name} className='slider-image' style={{ height: "200px", objectFit: "cover", objectPosition: "center", borderRadius: "10px" }} />
                         </Link>
                         </div>
                         </>
