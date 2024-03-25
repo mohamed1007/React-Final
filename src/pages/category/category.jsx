@@ -39,7 +39,7 @@ export default function Category() {
             <Sidebar></Sidebar>
         </div>
         <div className="col-9">
-            <h1 style={{display:"flex" , alignItems:"center" , justifyContent:"center"}}><span style={{fontSize:"3rem" , textAlign:"center", margin:"2rem", borderBottom:"1px black solid", fontFamily:'"Red Hat Mono", monospace'}}>Category Name : <span style={{color:"orangered", fontSize:"3rem"}}>{medicines[0].category}</span></span></h1>
+            <h1 style={{display:"flex" , alignItems:"center" , justifyContent:"center"}}><span style={{fontSize:"3rem" , textAlign:"center", margin:"2rem", borderBottom:"1px black solid", fontFamily:'"Red Hat Mono", monospace'}}><span style={{color:"orangered", fontSize:"3rem"}}>{medicines[0].category}</span></span></h1>
             <div className="row">
             {medicines.map((medicine, index) => (
                         <div className='col-md-4' key={index}>

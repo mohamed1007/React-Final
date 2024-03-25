@@ -4,7 +4,6 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { ContextData } from '../../context/contextData';
-
 import './login.css'
 const Login = () => {
     let navigate = useNavigate();
@@ -23,6 +22,7 @@ const Login = () => {
             alert('Invalid email or password');
         }
     };
+
 
     const loginSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email').required('Email is required'),
