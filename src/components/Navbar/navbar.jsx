@@ -4,11 +4,13 @@ import { ContextData } from '../../context/contextData';
 import logo from "../../assets/logo.png";
 import cartItem from '../../assets/cart_icon.png';
 import './navbar.css';
+import { ServicesLogic } from '../../context/services';
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [medicineSuggestions, setMedicineSuggestions] = useState([]);
     const { token, setToken, getTotalCartItems, allMedicine } = useContext(ContextData);
+    const {getTotalCartItemsSer}=useContext(ServicesLogic)
     const navigate = useNavigate();
 
     function logOut() {
@@ -91,7 +93,7 @@ const Navbar = () => {
                         <Link to={'/cart'}>
                             <img src={cartItem} alt='cart' />
                         </Link>
-                        <div className='nav-cart-count'>{getTotalCartItems()}</div>
+                        <div className='nav-cart-count'>{getTotalCartItems() + getTotalCartItemsSer()}</div>
                         {token ?
                             <Link to={'/login'}>
                                 <button className='btn btn-outline-danger' onClick={logOut}>Logout</button>

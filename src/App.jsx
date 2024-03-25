@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./pages/home/home.jsx"
-import Navbar from './components/Navbar/navbar.jsx';
-import Footer from './components/Footer/footer.jsx';
 import ContactUs from './pages/contact/contact.jsx';
 import Login from './pages/login/login.jsx';
 import Signup from './pages/signup/signup.jsx';
@@ -17,7 +15,6 @@ import Cart from './pages/cart/cart.jsx';
 import MainLayout from './Layouts/mainLayout/mainLayout.jsx';
 import OrderHistory from './pages/orderHistory/orderHistory.jsx';
 import Services from './pages/services/services.jsx';
-import Prescription from './pages/prescription/prescription.jsx';
 
 
 
@@ -45,7 +42,6 @@ const App = () => {
           <Route path="/about" element={<MainLayout><About/></MainLayout>} />
           <Route path="/cart" element={<MainLayout><IsLogin><Cart/></IsLogin></MainLayout>} />    
           <Route path='/orderHistory' element={<MainLayout><IsLogin><OrderHistory/></IsLogin></MainLayout>}/>
-          {/* <Route path="/prescription" element={<MainLayout><IsLogin><Prescription/></IsLogin></MainLayout>} /> */}
           <Route path="/services" element={<MainLayout><Services/></MainLayout>} />
         </Routes>
       </div>

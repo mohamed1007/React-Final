@@ -119,7 +119,7 @@ export default function Medicine() {
                                 </ul>
                                 <div className="mt-3">
                                     {medicine.stock > 0 ? (
-                                        <Link style={{ fontWeight: "bold", fontSize: "20px" }}  to="/cart" className="btn btn-outline-warning d-block ms-auto text-dark" onClick={() => addToCart(medicine._id, "medicine")}><i className="fa-solid fa-cart-shopping" style={{ marginRight: "15px" }}></i>Add to Cart</Link>
+                                        <Link style={{ fontWeight: "bold", fontSize: "20px" }}  to="/cart" className="btn btn-outline-warning d-block ms-auto text-dark" onClick={() => addToCart(medicine._id)}><i className="fa-solid fa-cart-shopping" style={{ marginRight: "15px" }}></i>Add to Cart</Link>
                                     ) : (
                                         <button className="btn btn-outline-success d-block ms-auto" disabled>Out of Stock</button>
                                     )}
